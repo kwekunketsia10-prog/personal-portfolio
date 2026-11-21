@@ -5,8 +5,7 @@ import { ProjectBrowserMockup } from "@/components/projects/ProjectBrowserMockup
 import type { Profile, Project } from "@/lib/types";
 
 export function Hero({ profile, projects }: { profile: Profile; projects: Project[] }) {
-  const primary = projects[0];
-  const secondary = projects[4] ?? projects[1];
+  const preview = projects[0];
 
   return (
     <section id="home" className="relative min-h-svh overflow-hidden bg-ink-deep text-background">
@@ -45,20 +44,20 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
             </div>
           ) : null}
           <div className="float-slow relative z-10">
-            {primary ? (
+            {preview ? (
               <ProjectBrowserMockup
-                src={primary.desktopImage}
-                alt={`${primary.name} homepage preview`}
-                url={primary.liveUrl}
+                src={preview.desktopImage}
+                alt={`${preview.name} homepage preview`}
+                url={preview.liveUrl}
                 priority
               />
             ) : null}
           </div>
-          {secondary ? (
+          {preview ? (
             <div className="float-slower absolute -bottom-8 -left-6 z-20 hidden w-[46%] rounded-2xl border border-line bg-surface p-3 text-ink shadow-2xl md:block">
               <p className="font-mono text-[10px] tracking-[0.16em] text-lime uppercase">Live preview</p>
-              <p className="mt-2 font-display text-xl tracking-tight">{secondary.name}</p>
-              <p className="mt-1 text-xs text-muted">{secondary.category}</p>
+              <p className="mt-2 font-display text-xl tracking-tight">{preview.name}</p>
+              <p className="mt-1 text-xs text-muted">{preview.category}</p>
             </div>
           ) : null}
         </div>
