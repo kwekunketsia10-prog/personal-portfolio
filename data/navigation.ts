@@ -1,16 +1,16 @@
 export const navigation = [
   { id: "home", label: "Home" },
-  { id: "journey", label: "My Journey" },
+  { id: "journey", label: "About" },
   { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
+  { id: "expertise", label: "Expertise" },
   { id: "contact", label: "Contact" },
 ] as const;
 
 export const footerNavigation = [
   { id: "home", label: "Home" },
-  { id: "journey", label: "Journey" },
+  { id: "journey", label: "About" },
   { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
+  { id: "expertise", label: "Expertise" },
   { id: "contact", label: "Contact" },
 ] as const;
 

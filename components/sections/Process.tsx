@@ -1,18 +1,17 @@
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { ProcessStep } from "@/lib/types";
 
 export function Process({ steps }: { steps: ProcessStep[] }) {
   return (
-    <section className="py-12 md:py-16">
-      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12">
-        <h2 className="font-display text-[clamp(2.2rem,4.6vw,3.8rem)] leading-[0.96] tracking-[-0.045em]">
-          From idea to interface.
-        </h2>
-        <ol className="mt-8 grid gap-4 md:grid-cols-4">
+    <section className="px-5 py-4 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1180px]">
+        <SectionHeading index="06 / How I work" title="From idea to interface." />
+        <ol className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
-            <li key={step.id} className="rounded-3xl border border-line bg-surface p-6">
-              <p className="inline-flex size-10 items-center justify-center rounded-full bg-lime font-mono text-xs text-background">{step.number}</p>
-              <h3 className="mt-3 font-display text-2xl tracking-tight">{step.title}</h3>
-              <p className="mt-2 leading-relaxed text-muted">{step.body}</p>
+            <li key={step.id} className="rounded-2xl bg-secondary p-4">
+              <p className="font-mono text-[11px] text-lime">{step.number}</p>
+              <h3 className="mt-2 font-display text-2xl tracking-tight">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
             </li>
           ))}
         </ol>
