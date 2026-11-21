@@ -48,18 +48,19 @@ export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; proj
   }
 
   const scene = scenes[active] ?? scenes[0];
+  const compact = active === 1;
 
   return (
     <div ref={track} className="relative h-[420vh]">
-      <div className="sticky top-0 flex h-svh flex-col pt-[4.5rem] pb-6">
-        <article className="grid h-full min-h-0 grid-cols-12 overflow-hidden rounded-[1.75rem] border border-line bg-surface">
-          <ol className="col-span-1 flex flex-col justify-between border-r border-line py-8" aria-label="Story scenes">
+      <div className="sticky top-0 flex h-svh flex-col justify-center pt-[4.5rem] pb-6">
+        <article className={`grid min-h-0 w-full grid-cols-12 overflow-hidden rounded-[1.75rem] border border-line bg-surface ${compact ? "h-auto" : "h-full"}`}>
+          <ol className={`col-span-1 flex flex-col border-r border-line py-8 ${compact ? "justify-center gap-6" : "justify-between"}`} aria-label="Story scenes">
             {scenes.map((item, index) => (
               <li key={item.id} className="flex flex-col items-center gap-3" aria-current={index === active ? "step" : undefined}>
                 <span className={`font-mono text-xs ${index === active ? "text-lime" : "text-muted"}`}>
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className={`h-10 w-px ${index === active ? "bg-lime" : "bg-line"}`} aria-hidden="true" />
+                <span className={`${compact ? "h-5" : "h-10"} w-px ${index === active ? "bg-lime" : "bg-line"}`} aria-hidden="true" />
               </li>
             ))}
           </ol>
@@ -121,7 +122,7 @@ function SceneVisual({
   fill?: boolean;
 }) {
   if (index === 0) return <IdeaFrame fill={fill} />;
-  if (index === 1) return <PracticeFrame fill={fill} />;
+  if (index === 1) return <PracticeFrame />;
   if (index === 2) return <WorkMosaic projects={projects} fill={fill} />;
   return <InvitationFrame scene={scene} projects={projects} fill={fill} />;
 }
@@ -159,7 +160,7 @@ function IdeaFrame({ fill }: { fill: boolean }) {
   );
 }
 
-function PracticeFrame({ fill }: { fill: boolean }) {
+function PracticeFrame() {
   const steps = [
     { title: "Layout", note: "Give the page a structure." },
     { title: "Type", note: "Give the words a voice." },
@@ -168,14 +169,15 @@ function PracticeFrame({ fill }: { fill: boolean }) {
   ];
 
   return (
-    <div className={fill ? "grid h-full grid-rows-4" : "divide-y divide-line border border-line"}>
+    <div className="grid grid-cols-2">
       {steps.map((step, index) => (
-        <div key={step.title} className={`flex items-center justify-between gap-4 px-6 ${fill ? "border-b border-line last:border-b-0" : "py-5"} ${index % 2 === 0 ? "bg-background" : "bg-secondary"}`}>
-          <div>
-            <p className="font-mono text-[11px] tracking-[0.16em] text-lime">{String(index + 1).padStart(2, "0")}</p>
-            <p className="mt-1 font-display text-2xl tracking-tight lg:text-3xl">{step.title}</p>
-          </div>
-          <p className="max-w-[11rem] text-right text-sm leading-snug text-muted">{step.note}</p>
+        <div
+          key={step.title}
+          className={`flex flex-col justify-between p-5 sm:p-6 ${index % 2 === 0 ? "border-r border-line bg-background" : "bg-secondary"} ${index < 2 ? "border-b border-line" : ""}`}
+        >
+          <p className="font-mono text-[11px] tracking-[0.16em] text-lime">{String(index + 1).padStart(2, "0")}</p>
+          <p className="mt-4 font-display text-2xl tracking-tight">{step.title}</p>
+          <p className="mt-2 max-w-[14rem] text-sm leading-snug text-muted">{step.note}</p>
         </div>
       ))}
     </div>
