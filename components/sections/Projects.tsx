@@ -5,9 +5,33 @@ import { ProjectBrowserMockup } from "@/components/projects/ProjectBrowserMockup
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Project } from "@/lib/types";
 
+function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
+  return (
+    <Link href={`/projects/${project.slug}`} className="group block h-full overflow-hidden rounded-3xl bg-secondary">
+      <div className={`relative overflow-hidden bg-ink ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`}>
+        {project.desktopImage ? (
+          <Image
+            src={project.desktopImage}
+            alt={`${project.name} homepage`}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+          />
+        ) : null}
+      </div>
+      <div className="flex items-center justify-between gap-3 px-4 py-3">
+        <div>
+          <p className="font-display text-lg tracking-tight">{project.name}</p>
+          <p className="text-xs text-muted">{project.category}</p>
+        </div>
+        <ArrowUpRight size={16} className="text-lime" />
+      </div>
+    </Link>
+  );
+}
+
 export function Projects({ projects }: { projects: Project[] }) {
   const featured = projects[0];
-  const spans = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-6", "lg:col-span-6"];
 
   return (
     <section id="projects" className="scroll-mt-24 px-5 py-8 sm:px-8 lg:px-12">
@@ -18,31 +42,16 @@ export function Projects({ projects }: { projects: Project[] }) {
           </SectionHeading>
         </div>
         <div className="mt-6 grid gap-3 lg:grid-cols-12">
-          {projects.map((project, index) => (
-            <Link
-              key={project.slug}
-              href={`/projects/${project.slug}`}
-              className={`group overflow-hidden rounded-3xl bg-secondary ${spans[index] ?? "lg:col-span-6"} ${index === 0 ? "lg:row-span-2" : ""}`}
-            >
-              <div className={`relative overflow-hidden bg-ink ${index === 0 ? "aspect-[16/10] lg:aspect-auto lg:h-[calc(100%-4.5rem)] lg:min-h-72" : "aspect-[16/9]"}`}>
-                {project.desktopImage ? (
-                  <Image
-                    src={project.desktopImage}
-                    alt={`${project.name} homepage`}
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
-                  />
-                ) : null}
-              </div>
-              <div className="flex items-center justify-between gap-3 px-4 py-3">
-                <div>
-                  <p className="font-display text-lg tracking-tight">{project.name}</p>
-                  <p className="text-xs text-muted">{project.category}</p>
-                </div>
-                <ArrowUpRight size={16} className="text-lime" />
-              </div>
-            </Link>
+          <div className="grid gap-3 lg:col-span-7">{projects[0] ? <ProjectCard project={projects[0]} large /> : null}</div>
+          <div className="grid gap-3 lg:col-span-5">
+            {projects.slice(1, 3).map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+          {projects.slice(3).map((project) => (
+            <div key={project.slug} className="lg:col-span-6">
+              <ProjectCard project={project} />
+            </div>
           ))}
         </div>
 

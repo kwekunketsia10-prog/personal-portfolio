@@ -1,6 +1,5 @@
 import { Capabilities } from "@/components/sections/Capabilities";
 import { Contact } from "@/components/sections/Contact";
-import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Hero } from "@/components/sections/Hero";
 import { IntroVideo } from "@/components/sections/IntroVideo";
 import { Journey } from "@/components/sections/Journey";
@@ -23,7 +22,6 @@ export default async function HomePage() {
       <Skills groups={content.skills} />
       <Process steps={content.process} />
       <WhyWorkWithMe points={content.values} />
-      <FinalCTA />
       <Contact profile={content.profile} />
     </main>
   );

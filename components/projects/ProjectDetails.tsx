@@ -5,50 +5,51 @@ import type { Project } from "@/lib/types";
 
 export function ProjectDetails({ project }: { project: Project }) {
   return (
-    <article className="mx-auto w-full max-w-[1440px] px-5 pt-24 pb-12 sm:px-8 lg:px-12">
-      <Link href="/#projects" className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.16em] text-muted uppercase hover:text-lime">
+    <article className="mx-auto w-full max-w-[1180px] px-5 pt-24 pb-12 sm:px-8 lg:px-12">
+      <Link href="/#projects" className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase hover:text-lime">
         <ArrowLeft size={14} /> Selected work
       </Link>
-      <p className="mt-6 font-mono text-xs tracking-[0.2em] text-lime uppercase">
+      <p className="mt-6 font-mono text-[11px] tracking-[0.18em] text-lime uppercase">
         {project.category} · Self-initiated project
       </p>
-      <h1 className="mt-3 max-w-5xl font-display text-[clamp(2.6rem,5.5vw,4.8rem)] leading-[0.94] tracking-[-0.05em]">
+      <h1 className="mt-3 max-w-4xl font-display text-[clamp(2.6rem,5.5vw,4.6rem)] leading-[0.94] tracking-[-0.05em]">
         {project.name}
       </h1>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{project.summary}</p>
-      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-5">
         <a
           href={project.liveUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep"
+          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.12em] text-background uppercase hover:bg-lime-deep"
         >
           View live website <ArrowUpRight size={16} />
         </a>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 rounded-[1.75rem] bg-secondary p-3 sm:p-4">
         <ProjectBrowserMockup src={project.desktopImage} alt={`${project.name} homepage`} url={project.liveUrl} priority />
       </div>
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-12">
-        <div className="space-y-6 lg:col-span-7">
+      <div className="mt-8 grid gap-4 lg:grid-cols-12">
+        <div className="space-y-4 lg:col-span-7">
           <Detail label="Project objective" text={project.objective} />
           <Detail label="Design direction" text={project.designDirection} />
-          <div>
-            <h2 className="font-mono text-xs tracking-[0.18em] text-lime uppercase">Main features</h2>
-            <ul className="mt-4 space-y-3">
+          <div className="rounded-2xl border border-line bg-surface p-5">
+            <h2 className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">Main features</h2>
+            <ul className="mt-3 space-y-2">
               {project.features.map((feature) => (
-                <li key={feature} className="border-t border-line pt-3 text-lg leading-relaxed">
+                <li key={feature} className="text-sm leading-relaxed text-ink">
+                  <span className="mr-2 text-lime">→</span>
                   {feature}
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <aside className="h-fit border border-line bg-surface p-6 lg:col-span-5">
+        <aside className="h-fit rounded-2xl bg-secondary p-5 lg:col-span-5">
           <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">Personal study and practice</p>
-          <dl className="mt-6 space-y-5">
+          <dl className="mt-4 space-y-4">
             <Meta term="My role" value={project.role} />
             <Meta term="What I learned" value={project.learned} />
             <Meta
@@ -57,7 +58,7 @@ export function ProjectDetails({ project }: { project: Project }) {
             />
           </dl>
           {project.mobileImage ? (
-            <div className="mt-8">
+            <div className="mt-6">
               <MobilePreview src={project.mobileImage} alt={`${project.name} mobile homepage`} />
             </div>
           ) : null}
@@ -69,9 +70,9 @@ export function ProjectDetails({ project }: { project: Project }) {
 
 function Detail({ label, text }: { label: string; text: string }) {
   return (
-    <div>
-      <h2 className="font-mono text-xs tracking-[0.18em] text-lime uppercase">{label}</h2>
-      <p className="mt-3 text-lg leading-relaxed text-ink">{text}</p>
+    <div className="rounded-2xl border border-line bg-surface p-5">
+      <h2 className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">{label}</h2>
+      <p className="mt-2 leading-relaxed text-ink">{text}</p>
     </div>
   );
 }
@@ -80,7 +81,7 @@ function Meta({ term, value }: { term: string; value: string }) {
   return (
     <div>
       <dt className="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">{term}</dt>
-      <dd className="mt-2 leading-relaxed">{value}</dd>
+      <dd className="mt-1 text-sm leading-relaxed">{value}</dd>
     </div>
   );
 }

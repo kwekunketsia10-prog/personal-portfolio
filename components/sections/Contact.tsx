@@ -58,14 +58,18 @@ export function Contact({ profile }: { profile: Profile }) {
   }
 
   return (
-    <section id="contact" className="scroll-mt-24 bg-wash py-12 md:py-16">
-      <div className="mx-auto grid w-full max-w-[1440px] gap-8 px-5 sm:px-8 lg:grid-cols-12 lg:px-12">
+    <section id="contact" className="scroll-mt-24 px-5 py-6 sm:px-8 lg:px-12">
+      <div className="mx-auto grid w-full max-w-[1180px] gap-8 rounded-[1.75rem] bg-secondary px-5 py-8 sm:px-8 lg:grid-cols-12 lg:px-10">
         <div className="lg:col-span-5">
-          <h2 className="font-display text-[clamp(2.2rem,4.6vw,3.8rem)] leading-[0.96] tracking-[-0.045em]">
+          <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">07 / Start a project</p>
+          <h2 className="mt-3 font-display text-[clamp(2.1rem,4.2vw,3.4rem)] leading-[0.96] tracking-[-0.045em]">
             Have a project in mind?
           </h2>
-          <p className="mt-3 text-lg leading-relaxed text-muted">
+          <p className="mt-3 leading-relaxed text-muted">
             Tell me a little about your business or idea. I&apos;d love to hear what you&apos;re planning.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">
+            Whether you&apos;re starting a business, growing an existing brand, or looking to improve your online presence, I can help turn your idea into a professional website.
           </p>
           <div className="mt-5 space-y-2 text-ink">
             {profile.email ? <p><a className="hover:text-lime" href={`mailto:${profile.email}`}>{profile.email}</a></p> : <p className="text-muted">Email: add yours in the admin.</p>}
@@ -75,7 +79,7 @@ export function Contact({ profile }: { profile: Profile }) {
           <SocialLinks profile={profile} className="mt-5" />
         </div>
 
-        <form onSubmit={onSubmit} noValidate className="rounded-3xl border border-line bg-surface p-5 shadow-[0_20px_50px_rgba(14,124,116,0.08)] sm:p-6 lg:col-span-7">
+        <form onSubmit={onSubmit} noValidate className="rounded-3xl bg-surface p-5 sm:p-6 lg:col-span-7">
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Full name" name="fullName" error={errors.fullName} autoComplete="name" />
             <Field label="Email address" name="email" type="email" error={errors.email} autoComplete="email" />

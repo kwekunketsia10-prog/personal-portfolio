@@ -116,13 +116,13 @@ export function Navbar({ profile }: { profile: Profile }) {
         <div className="flex items-center gap-3">
           <a
             href={sectionHref("contact", pathname)}
-            className="hidden min-h-11 items-center rounded-full bg-lime px-4 text-[0.72rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep sm:inline-flex"
+            className="hidden min-h-10 items-center rounded-full bg-ink px-4 text-[0.72rem] font-semibold tracking-[0.12em] text-background uppercase hover:bg-lime sm:inline-flex"
           >
-            Let&apos;s work together
+            Let&apos;s talk
           </a>
           <button
             type="button"
-            className={`inline-flex size-11 items-center justify-center rounded-full border lg:hidden ${overHero ? "border-background/30 text-background" : "border-line text-ink"}`}
+            className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink lg:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             onClick={() => setOpen((value) => !value)}
@@ -149,7 +149,7 @@ export function Navbar({ profile }: { profile: Profile }) {
             <a
               href={sectionHref("contact", pathname)}
               onClick={close}
-              className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-lime text-sm font-semibold tracking-[0.14em] text-background uppercase"
+              className="mt-5 inline-flex min-h-12 items-center justify-center rounded-full bg-ink text-sm font-semibold tracking-[0.12em] text-background uppercase"
             >
               Let&apos;s work together
             </a>
