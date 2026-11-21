@@ -12,7 +12,7 @@ export function FinalCTA() {
           Whether you&apos;re starting a business, growing an existing brand, or looking to improve your online presence, I can help turn your idea into a professional website.
         </p>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <a href="#contact" className="inline-flex min-h-12 items-center justify-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-ink uppercase hover:bg-lime-deep">
+          <a href="#contact" className="inline-flex min-h-12 items-center justify-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep">
             Let&apos;s build your website
           </a>
           <a href="#contact" className="inline-flex min-h-12 items-center justify-center border border-line px-6 text-[0.78rem] font-semibold tracking-[0.16em] uppercase hover:border-lime hover:text-lime">

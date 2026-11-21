@@ -100,7 +100,7 @@ export function Contact({ profile }: { profile: Profile }) {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-8 inline-flex min-h-12 items-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-ink uppercase hover:bg-lime-deep disabled:opacity-60"
+            className="mt-8 inline-flex min-h-12 items-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep disabled:opacity-60"
           >
             {status === "submitting" ? "Sending" : "Send project enquiry"}
           </button>

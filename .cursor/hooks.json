@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .cursor/hooks/github-sync.ps1 -Mode start",
+        "timeout": 20
+      }
+    ],
+    "stop": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File .cursor/hooks/github-sync.ps1 -Mode push",
+        "timeout": 60
+      }
+    ]
+  }
+}

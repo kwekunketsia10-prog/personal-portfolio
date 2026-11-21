@@ -26,7 +26,7 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink">{profile.heroBody}</p>
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">{profile.heroSupport}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href="#projects" className="inline-flex min-h-12 items-center justify-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-ink uppercase hover:bg-lime-deep">
+            <a href="#projects" className="inline-flex min-h-12 items-center justify-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep">
               Explore my work
             </a>
             <a href="#contact" className="inline-flex min-h-12 items-center justify-center border border-line px-6 text-[0.78rem] font-semibold tracking-[0.16em] uppercase hover:border-lime hover:text-lime">

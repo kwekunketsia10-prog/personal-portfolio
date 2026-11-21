@@ -17,7 +17,7 @@ export function LoginForm() {
         <input name="password" type="password" autoComplete="current-password" required className="mt-2 w-full border-b border-line bg-transparent py-3 outline-none" />
       </label>
       {state.error ? <p className="text-sm text-lime">{state.error}</p> : null}
-      <button disabled={pending} className="inline-flex min-h-12 items-center bg-lime px-5 text-sm font-semibold tracking-[0.14em] text-ink uppercase disabled:opacity-60">
+      <button disabled={pending} className="inline-flex min-h-12 items-center bg-lime px-5 text-sm font-semibold tracking-[0.14em] text-background uppercase disabled:opacity-60">
         {pending ? "Signing in" : "Sign in"}
       </button>
     </form>

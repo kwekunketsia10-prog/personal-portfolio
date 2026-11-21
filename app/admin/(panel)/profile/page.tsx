@@ -47,7 +47,7 @@ export default async function ProfilePage({
           <input name="journeyVideoAutoplay" type="checkbox" defaultChecked={profile.journeyVideoAutoplay} />
           Allow muted autoplay for the journey video
         </label>
-        <button className="inline-flex min-h-12 w-fit items-center bg-lime px-5 text-sm font-semibold tracking-[0.14em] text-ink uppercase">
+        <button className="inline-flex min-h-12 w-fit items-center bg-lime px-5 text-sm font-semibold tracking-[0.14em] text-background uppercase">
           Save profile
         </button>
       </form>

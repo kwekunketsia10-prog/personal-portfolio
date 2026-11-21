@@ -90,7 +90,7 @@ function ProjectCopy({
           href={project.liveUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex min-h-12 items-center justify-center gap-2 bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.16em] text-ink uppercase hover:bg-lime-deep"
+          className="inline-flex min-h-12 items-center justify-center gap-2 bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep"
         >
           View live project <ArrowUpRight size={16} />
         </a>

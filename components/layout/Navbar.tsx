@@ -116,7 +116,7 @@ export function Navbar({ profile }: { profile: Profile }) {
         <div className="flex items-center gap-3">
           <a
             href={sectionHref("contact", pathname)}
-            className="hidden min-h-11 items-center bg-lime px-4 text-[0.72rem] font-semibold tracking-[0.16em] text-ink uppercase hover:bg-lime-deep sm:inline-flex"
+            className="hidden min-h-11 items-center bg-lime px-4 text-[0.72rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep sm:inline-flex"
           >
             Let&apos;s work together
           </a>
@@ -149,7 +149,7 @@ export function Navbar({ profile }: { profile: Profile }) {
             <a
               href={sectionHref("contact", pathname)}
               onClick={close}
-              className="mt-5 inline-flex min-h-12 items-center justify-center bg-lime text-sm font-semibold tracking-[0.16em] text-ink uppercase"
+              className="mt-5 inline-flex min-h-12 items-center justify-center bg-lime text-sm font-semibold tracking-[0.16em] text-background uppercase"
             >
               Let&apos;s work together
             </a>

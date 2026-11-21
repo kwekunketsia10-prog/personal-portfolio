@@ -16,15 +16,15 @@ export default async function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#FFF6EF",
-          color: "#1A1330",
+          background: "#F4F6F5",
+          color: "#122421",
           padding: 72,
         }}
       >
-        <div style={{ color: "#D10F62", fontSize: 24, letterSpacing: 4 }}>WEB DEVELOPER</div>
+        <div style={{ color: "#0E7C74", fontSize: 24, letterSpacing: 4 }}>WEB DEVELOPER</div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 76, lineHeight: 0.95, letterSpacing: -2 }}>
           <span>{profile.name}</span>
-          <span style={{ color: "#5B46F5" }}>Digital experiences.</span>
+          <span style={{ color: "#0E7C74" }}>Digital experiences.</span>
         </div>
       </div>
     ),
