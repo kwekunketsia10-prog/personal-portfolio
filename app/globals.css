@@ -37,6 +37,11 @@ body {
   font-family: var(--font-space), sans-serif;
 }
 
+.font-hero {
+  font-family: var(--font-hero), Georgia, serif;
+  font-optical-sizing: auto;
+}
+
 .font-mono {
   font-family: var(--font-dm), ui-monospace, monospace;
 }

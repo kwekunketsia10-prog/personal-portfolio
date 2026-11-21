@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { DM_Mono, Manrope, Space_Grotesk } from "next/font/google";
+import { DM_Mono, Fraunces, Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const display = Space_Grotesk({
@@ -21,9 +21,15 @@ const mono = DM_Mono({
   display: "swap",
 });
 
+const hero = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-hero",
+  display: "swap",
+});
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable} h-full antialiased`}>
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable} ${hero.variable} h-full antialiased`}>
       <body className="min-h-full bg-background text-ink">
         <a className="skip-link" href="#content">
           Skip to content
