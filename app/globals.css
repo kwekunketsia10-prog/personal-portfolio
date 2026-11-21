@@ -45,28 +45,6 @@ body {
   background-color: #072421;
 }
 
-.work-strip {
-  transition: flex-grow 450ms ease;
-}
-
-.work-strip img {
-  object-fit: cover;
-  object-position: top;
-}
-
-.work-stack:hover > .work-strip {
-  flex-grow: 0.65;
-}
-
-.work-stack:hover > .work-strip:hover {
-  flex-grow: 6.5;
-}
-
-.work-stack:hover > .work-strip:hover img {
-  object-fit: contain;
-  object-position: top center;
-}
-
 ::selection {
   background: #0e7c74;
   color: #f4f6f5;

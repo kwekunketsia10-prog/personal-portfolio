@@ -197,6 +197,13 @@ function WorkMosaic({ projects, fill }: { projects: Project[]; fill: boolean }) 
 
   return (
     <div className="work-stack flex h-full flex-col gap-2 bg-background p-3">
+      <style>{`
+        .work-strip { transition: flex-grow 450ms ease; }
+        .work-strip img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .work-stack:hover > .work-strip { flex-grow: 0.55; }
+        .work-stack:hover > .work-strip:hover { flex-grow: 7; }
+        .work-stack:hover > .work-strip:hover img { object-fit: contain; object-position: top center; }
+      `}</style>
       {shown.map((project) => (
         <ProjectStill key={project.slug} project={project} fill />
       ))}
