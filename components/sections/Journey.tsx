@@ -13,7 +13,9 @@ export function Journey({ stages }: { stages: JourneyStage[] }) {
           {stages.map((stage, index) => (
             <Reveal key={stage.id} delay={index * 0.05}>
               <li className="grid gap-4 border-b border-line py-8 md:grid-cols-12 md:items-start md:py-10">
-                <p className="font-mono text-sm tracking-[0.18em] text-lime md:col-span-2">{stage.number}</p>
+                <p className="md:col-span-2">
+                  <span className="inline-flex size-10 items-center justify-center rounded-full bg-secondary font-mono text-xs text-lime">{stage.number}</span>
+                </p>
                 <h3 className="font-display text-3xl tracking-tight md:col-span-4 md:text-4xl">{stage.title}</h3>
                 <p className="text-lg leading-relaxed text-muted md:col-span-6">{stage.body}</p>
               </li>

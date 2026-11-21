@@ -41,6 +41,10 @@ body {
   font-family: var(--font-dm), ui-monospace, monospace;
 }
 
+.bg-ink-deep {
+  background-color: #072421;
+}
+
 ::selection {
   background: #0e7c74;
   color: #f4f6f5;

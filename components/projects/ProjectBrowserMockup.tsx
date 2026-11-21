@@ -19,7 +19,7 @@ export function ProjectBrowserMockup({
   imageClassName = "",
 }: MockupProps) {
   return (
-    <div className={`overflow-hidden border border-line bg-surface shadow-[0_28px_70px_rgba(14,124,116,0.14)] ${className}`}>
+    <div className={`overflow-hidden rounded-[1.25rem] border border-line bg-surface shadow-[0_28px_70px_rgba(14,124,116,0.14)] ${className}`}>
       <div className="flex items-center gap-3 border-b border-line px-4 py-3">
         <span className="flex gap-1.5" aria-hidden="true">
           <i className="size-2.5 rounded-full bg-lime" />

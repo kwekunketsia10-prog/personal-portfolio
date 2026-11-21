@@ -8,11 +8,11 @@ export function Skills({ groups }: { groups: SkillGroup[] }) {
         <SectionHeading title="The tools behind the work.">
           A working set of tools I use to design and build websites. Edit this list from the admin as it changes.
         </SectionHeading>
-        <div className="mt-16 grid gap-12 lg:grid-cols-3">
+        <div className="mt-16 grid gap-4 lg:grid-cols-3">
           {groups.map((group) => (
-            <div key={group.id}>
+            <div key={group.id} className="rounded-3xl bg-surface p-7">
               <h3 className="font-mono text-xs tracking-[0.18em] text-lime uppercase">{group.title}</h3>
-              <ul className="mt-6 divide-y divide-line border-y border-line">
+              <ul className="mt-6 divide-y divide-line">
                 {group.items.map((item) => (
                   <li key={item} className="py-4 text-lg">
                     {item}

@@ -20,14 +20,14 @@ export function Capabilities({ items }: { items: Capability[] }) {
           I enjoy building digital experiences that help businesses present themselves professionally and connect with their customers.
         </SectionHeading>
         <p className="mt-4 max-w-2xl text-muted">These are kinds of websites I can build. They are not a list of paid commissions.</p>
-        <div className="mt-14 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => {
             const Icon = icons[item.icon] ?? Layers;
             return (
               <Reveal key={item.id} delay={index * 0.04} className="h-full">
-                <article className="group h-full bg-background p-7 transition hover:bg-surface">
+                <article className="group h-full rounded-3xl border border-line bg-surface p-7 shadow-[0_16px_40px_rgba(14,124,116,0.06)] transition hover:-translate-y-1">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs tracking-[0.18em] text-lime">{item.number}</span>
+                    <span className="inline-flex size-10 items-center justify-center rounded-full bg-secondary font-mono text-xs tracking-[0.08em] text-lime">{item.number}</span>
                     <Icon size={20} className="text-muted transition group-hover:text-lime" />
                   </div>
                   <h3 className="mt-10 font-display text-3xl tracking-tight">{item.title}</h3>

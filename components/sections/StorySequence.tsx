@@ -52,7 +52,7 @@ export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; proj
   return (
     <div ref={track} className="relative h-[420vh]">
       <div className="sticky top-0 flex h-svh flex-col pt-[4.5rem] pb-6">
-        <article className="grid h-full min-h-0 grid-cols-12 overflow-hidden border border-line bg-surface">
+        <article className="grid h-full min-h-0 grid-cols-12 overflow-hidden rounded-[1.75rem] border border-line bg-surface">
           <ol className="col-span-1 flex flex-col justify-between border-r border-line py-8" aria-label="Story scenes">
             {scenes.map((item, index) => (
               <li key={item.id} className="flex flex-col items-center gap-3" aria-current={index === active ? "step" : undefined}>
@@ -77,7 +77,7 @@ export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; proj
 
 function Scene({ scene, index, projects }: { scene: StoryScene; index: number; projects: Project[] }) {
   return (
-    <div className="grid items-stretch gap-6 border border-line bg-surface p-5 sm:p-8">
+    <div className="grid items-stretch gap-6 rounded-3xl border border-line bg-surface p-5 sm:p-8">
       <SceneCopy scene={scene} index={index} />
       <SceneVisual scene={scene} index={index} projects={projects} />
     </div>
@@ -100,7 +100,7 @@ function SceneCopy({ scene, index }: { scene: StoryScene; index: number }) {
       {scene.ctaLabel ? (
         <a
           href="#contact"
-          className="mt-6 inline-flex min-h-12 w-fit items-center bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep md:mt-8"
+          className="mt-6 inline-flex min-h-12 w-fit items-center rounded-full bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep md:mt-8"
         >
           {scene.ctaLabel}
         </a>

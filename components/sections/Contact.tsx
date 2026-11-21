@@ -75,7 +75,7 @@ export function Contact({ profile }: { profile: Profile }) {
           <SocialLinks profile={profile} className="mt-8" />
         </div>
 
-        <form onSubmit={onSubmit} noValidate className="border border-line bg-surface p-6 sm:p-8 lg:col-span-7">
+        <form onSubmit={onSubmit} noValidate className="rounded-3xl border border-line bg-surface p-6 shadow-[0_20px_50px_rgba(14,124,116,0.08)] sm:p-8 lg:col-span-7">
           <div className="grid gap-6 sm:grid-cols-2">
             <Field label="Full name" name="fullName" error={errors.fullName} autoComplete="name" />
             <Field label="Email address" name="email" type="email" error={errors.email} autoComplete="email" />
@@ -100,7 +100,7 @@ export function Contact({ profile }: { profile: Profile }) {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-8 inline-flex min-h-12 items-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep disabled:opacity-60"
+            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep disabled:opacity-60"
           >
             {status === "submitting" ? "Sending" : "Send project enquiry"}
           </button>

@@ -11,7 +11,7 @@ export function WhyWorkWithMe({ points }: { points: ValuePoint[] }) {
         </div>
         <ul className="grid gap-8 sm:grid-cols-2 lg:col-span-8">
           {points.map((point) => (
-            <li key={point.id}>
+            <li key={point.id} className="rounded-3xl border border-line bg-surface p-6">
               <h3 className="text-xl text-ink">{point.title}</h3>
               <p className="mt-3 leading-relaxed text-muted">{point.body}</p>
             </li>
