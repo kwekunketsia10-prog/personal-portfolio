@@ -82,7 +82,6 @@ export function Navbar({ profile }: { profile: Profile }) {
   }, [open, menuId]);
 
   const close = () => setOpen(false);
-  const overHero = pathname === "/" && !scrolled && !open;
 
   return (
     <header
@@ -92,9 +91,9 @@ export function Navbar({ profile }: { profile: Profile }) {
     >
       <div className="mx-auto flex h-[4.5rem] w-full max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
         <a href={sectionHref("home", pathname)} className="min-w-0 shrink">
-          <span className={`font-display text-base tracking-tight sm:text-lg ${overHero ? "text-background" : "text-ink"}`}>{profile.name}</span>
-          <span className={overHero ? "text-background/50" : "text-muted"}> / </span>
-          <span className={`font-mono text-[10px] tracking-[0.16em] uppercase sm:text-[11px] ${overHero ? "text-background/70" : "text-muted"}`}>
+          <span className="font-display text-base tracking-tight text-ink sm:text-lg">{profile.name}</span>
+          <span className="text-muted"> / </span>
+          <span className="font-mono text-[10px] tracking-[0.16em] text-muted uppercase sm:text-[11px]">
             Web Developer
           </span>
         </a>
@@ -106,13 +105,7 @@ export function Navbar({ profile }: { profile: Profile }) {
               href={sectionHref(item.id, pathname)}
               aria-current={pathname === "/" && active === item.id ? "true" : undefined}
               className={`font-mono text-[11px] tracking-[0.16em] uppercase transition ${
-                overHero
-                  ? pathname === "/" && active === item.id
-                    ? "text-background"
-                    : "text-background/70 hover:text-background"
-                  : pathname === "/" && active === item.id
-                    ? "text-lime"
-                    : "text-muted hover:text-lime"
+                pathname === "/" && active === item.id ? "text-lime" : "text-muted hover:text-lime"
               }`}
             >
               {item.label}
@@ -129,7 +122,7 @@ export function Navbar({ profile }: { profile: Profile }) {
           </a>
           <button
             type="button"
-            className={`inline-flex size-11 items-center justify-center rounded-full border lg:hidden ${overHero ? "border-background/30 text-background" : "border-line text-ink"}`}
+            className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink lg:hidden"
             aria-expanded={open}
             aria-controls={menuId}
             onClick={() => setOpen((value) => !value)}
