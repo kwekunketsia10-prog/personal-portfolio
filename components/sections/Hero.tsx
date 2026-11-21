@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 import { ProjectBrowserMockup } from "@/components/projects/ProjectBrowserMockup";
 import type { Profile, Project } from "@/lib/types";
@@ -37,24 +38,26 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
         </div>
 
         <div className="relative lg:col-span-5">
-          {preview ? (
-            <div className="overflow-hidden rounded-[1.25rem] shadow-[0_28px_70px_rgba(0,0,0,0.28)]">
+          {profile.portraitPath ? (
+            <div className="absolute -top-16 right-0 z-20 hidden size-24 overflow-hidden rounded-2xl border border-background/20 lg:block">
+              <Image src={profile.portraitPath} alt="" fill className="object-cover" sizes="96px" />
+            </div>
+          ) : null}
+          <div className="float-slow relative z-10">
+            {preview ? (
               <ProjectBrowserMockup
                 src={preview.desktopImage}
                 alt={`${preview.name} homepage preview`}
                 url={preview.liveUrl}
                 priority
-                className="rounded-none border-0 shadow-none"
-                imageClassName="aspect-[16/8]"
-                imagePosition="object-[center_42%]"
               />
-              <div className="flex items-end justify-between gap-4 bg-surface px-4 py-3 text-ink">
-                <div>
-                  <p className="font-mono text-[10px] tracking-[0.16em] text-lime uppercase">Live preview</p>
-                  <p className="mt-1 font-display text-xl tracking-tight">{preview.name}</p>
-                </div>
-                <p className="text-xs text-muted">{preview.category}</p>
-              </div>
+            ) : null}
+          </div>
+          {preview ? (
+            <div className="float-slower absolute -bottom-8 -left-6 z-20 hidden w-[46%] rounded-2xl border border-line bg-surface p-3 text-ink shadow-2xl md:block">
+              <p className="font-mono text-[10px] tracking-[0.16em] text-lime uppercase">Live preview</p>
+              <p className="mt-2 font-display text-xl tracking-tight">{preview.name}</p>
+              <p className="mt-1 text-xs text-muted">{preview.category}</p>
             </div>
           ) : null}
         </div>
