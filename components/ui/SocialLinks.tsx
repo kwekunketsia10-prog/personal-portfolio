@@ -1,7 +1,15 @@
 import type { Profile } from "@/lib/types";
 import { whatsappHref } from "@/lib/utils";
 
-export function SocialLinks({ profile, className = "" }: { profile: Profile; className?: string }) {
+export function SocialLinks({
+  profile,
+  className = "",
+  tone = "default",
+}: {
+  profile: Profile;
+  className?: string;
+  tone?: "default" | "light";
+}) {
   const items = [
     profile.githubUrl ? { href: profile.githubUrl, label: "GitHub" } : null,
     profile.linkedinUrl ? { href: profile.linkedinUrl, label: "LinkedIn" } : null,
@@ -17,7 +25,7 @@ export function SocialLinks({ profile, className = "" }: { profile: Profile; cla
         <li key={item.label}>
           <a
             href={item.href}
-            className="font-mono text-xs tracking-[0.16em] text-muted uppercase hover:text-lime"
+            className={`font-mono text-xs tracking-[0.16em] uppercase ${tone === "light" ? "text-background/70 hover:text-background" : "text-muted hover:text-lime"}`}
             {...(item.href.startsWith("mailto:") ? {} : { target: "_blank", rel: "noreferrer" })}
           >
             {item.label}

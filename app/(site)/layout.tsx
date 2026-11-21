@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SiteLayout({ children }: { children: ReactNode }) {
-  const { profile } = await getSiteContent();
+  const { profile, projects } = await getSiteContent();
   return (
     <>
       <Suspense fallback={<div className="h-[4.5rem]" />}>
@@ -31,7 +31,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       </Suspense>
       <div id="content">{children}</div>
       <Suspense>
-        <Footer profile={profile} />
+        <Footer profile={profile} projects={projects} />
       </Suspense>
       <WhatsAppButton profile={profile} />
     </>
