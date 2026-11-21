@@ -16,13 +16,13 @@ export default async function HomePage() {
   return (
     <main>
       <Hero profile={content.profile} projects={content.projects} />
-      <IntroVideo profile={content.profile} scenes={content.story} projects={content.projects} />
-      <Journey stages={content.journey} />
-      <Projects projects={content.projects} />
       <Capabilities items={content.capabilities} />
+      <Projects projects={content.projects} />
       <Skills groups={content.skills} />
       <Process steps={content.process} />
+      <Journey stages={content.journey} />
       <WhyWorkWithMe points={content.values} />
+      <IntroVideo profile={content.profile} scenes={content.story} projects={content.projects} />
       <FinalCTA />
       <Contact profile={content.profile} />
     </main>
