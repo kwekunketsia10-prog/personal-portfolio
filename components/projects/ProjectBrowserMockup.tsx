@@ -8,6 +8,7 @@ type MockupProps = {
   priority?: boolean;
   className?: string;
   imageClassName?: string;
+  imagePosition?: string;
 };
 
 export function ProjectBrowserMockup({
@@ -17,6 +18,7 @@ export function ProjectBrowserMockup({
   priority = false,
   className = "",
   imageClassName = "",
+  imagePosition = "object-top",
 }: MockupProps) {
   return (
     <div className={`overflow-hidden rounded-[1.25rem] border border-line bg-surface shadow-[0_28px_70px_rgba(14,124,116,0.14)] ${className}`}>
@@ -28,7 +30,7 @@ export function ProjectBrowserMockup({
         </span>
         <span className="truncate font-mono text-[11px] text-muted">{displayHost(url)}</span>
       </div>
-      <div className={`relative aspect-[1440/960] overflow-hidden bg-surface ${imageClassName}`}>
+      <div className={`relative overflow-hidden bg-surface ${imageClassName || "aspect-[1440/960]"}`}>
         {src ? (
           <Image
             src={src}
@@ -36,7 +38,7 @@ export function ProjectBrowserMockup({
             fill
             priority={priority}
             sizes="(min-width: 1024px) 68vw, 100vw"
-            className="object-cover object-top transition duration-700 group-hover:scale-[1.035]"
+            className={`object-cover ${imagePosition} transition duration-700 group-hover:scale-[1.035]`}
           />
         ) : (
           <ScreenshotSlot label={alt} />
