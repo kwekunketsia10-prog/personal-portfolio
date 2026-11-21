@@ -5,7 +5,7 @@ import type { Profile, Project } from "@/lib/types";
 
 export function Hero({ profile, projects }: { profile: Profile; projects: Project[] }) {
   const preview = projects[0];
-  const tags = ["Web developer", "Practice websites", projects[1]?.category.split("/")[0]?.trim()].filter(Boolean);
+  const tags = ["Web developer", "Practice websites", "Fashion and beauty"];
 
   return (
     <section id="home" className="scroll-mt-20 px-5 pt-24 pb-8 sm:px-8 lg:px-8">
