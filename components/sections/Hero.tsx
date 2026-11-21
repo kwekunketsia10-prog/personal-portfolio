@@ -30,17 +30,17 @@ export function Hero({ profile }: { profile: Profile; projects: Project[] }) {
         </div>
       </div>
 
-      <div className="relative mx-auto hidden h-[860px] w-full max-w-[1180px] lg:block">
-        <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1180 860" fill="none" aria-hidden="true">
-          <path d="M210 250C300 340 390 430 500 530" stroke="rgba(18,36,33,0.16)" strokeWidth="1.25" />
-          <path d="M970 290C860 390 780 470 690 560" stroke="rgba(18,36,33,0.16)" strokeWidth="1.25" />
+      <div className="relative mx-auto hidden h-[900px] w-full max-w-[1180px] lg:block">
+        <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 1180 900" fill="none" aria-hidden="true">
+          <path d="M230 250C320 360 400 470 520 600" stroke="rgba(18,36,33,0.16)" strokeWidth="1.25" />
+          <path d="M960 340C850 450 780 530 690 640" stroke="rgba(18,36,33,0.16)" strokeWidth="1.25" />
         </svg>
 
-        <div className="relative z-20 mx-auto max-w-[740px] px-6 pt-28 text-center">
+        <div className="relative z-20 mx-auto max-w-[680px] px-6 pt-24 text-center">
           <HeroCopy profile={profile} />
         </div>
 
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[560px]">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[470px]">
           <Image
             src="/images/hero/portrait-up.png"
             alt=""
@@ -53,41 +53,41 @@ export function Hero({ profile }: { profile: Profile; projects: Project[] }) {
 
         <NoteCard className="top-[168px] left-[18px] -rotate-6" icon={<AudioLines size={16} />} title="From idea to interface." body="Designed, then built." />
         <NoteCard
-          className="top-[250px] right-[18px] rotate-3"
+          className="top-[300px] right-[18px] rotate-3"
           faces
           title="Fashion, beauty, hospitality."
           body="Practice sites across those fields."
         />
 
-        <div className="absolute top-[78px] right-[86px] z-30">
+        <div className="absolute top-[128px] right-[24px] z-30">
           <OrbitBadge />
         </div>
 
-        <div className="absolute top-[430px] left-[150px] z-20 h-[132px] w-[168px] -rotate-[16deg] overflow-hidden rounded-[1.15rem] shadow-[0_18px_40px_rgba(18,36,33,0.14)]">
+        <div className="absolute top-[500px] left-[108px] z-20 h-[132px] w-[168px] -rotate-[16deg] overflow-hidden rounded-[1.15rem] shadow-[0_18px_40px_rgba(18,36,33,0.14)]">
           <Image src="/images/hero/ridge.jpg" alt="" fill className="object-cover" sizes="168px" />
         </div>
         <OrbitPill
-          className="top-[390px] left-[300px] z-30 w-[214px] -rotate-[8deg]"
+          className="top-[470px] left-[250px] z-30 w-[214px] -rotate-[8deg]"
           tone="bg-lime text-background"
           icon={<PenLine size={15} />}
           title="Design"
           body="Clear layouts"
         />
         <OrbitPill
-          className="top-[500px] left-[430px] z-30 w-[214px] rotate-[6deg]"
+          className="top-[590px] left-[390px] z-30 w-[214px] rotate-[6deg]"
           tone="bg-indigo text-background"
           icon={<Layers size={15} />}
           title="Build"
           body="Working websites"
         />
         <OrbitPill
-          className="top-[400px] right-[250px] z-30 w-[206px] rotate-[10deg]"
+          className="top-[500px] right-[230px] z-30 w-[206px] rotate-[10deg]"
           tone="bg-sun text-ink"
           icon={<Sparkles size={15} />}
           title="Refine"
           body="Ready to launch"
         />
-        <div className="absolute top-[500px] right-[150px] z-20 h-[118px] w-[168px] rotate-[14deg] overflow-hidden rounded-[1.15rem] shadow-[0_18px_40px_rgba(18,36,33,0.16)]">
+        <div className="absolute top-[590px] right-[108px] z-20 h-[118px] w-[168px] rotate-[14deg] overflow-hidden rounded-[1.15rem] shadow-[0_18px_40px_rgba(18,36,33,0.16)]">
           <Image src="/images/hero/moon.jpg" alt="" fill className="object-cover" sizes="168px" />
         </div>
 
@@ -125,7 +125,7 @@ export function Hero({ profile }: { profile: Profile; projects: Project[] }) {
 function HeroCopy({ profile }: { profile: Profile }) {
   return (
     <>
-      <h1 className="font-hero text-[clamp(3rem,5.6vw,5.35rem)] leading-[0.92] tracking-[-0.04em] text-ink">
+      <h1 className="font-hero text-[clamp(2.8rem,4.8vw,4.7rem)] leading-[0.92] tracking-[-0.04em] text-balance text-ink">
         <span className="block">
           <AnimatedText text={profile.heroHeading} />
         </span>
