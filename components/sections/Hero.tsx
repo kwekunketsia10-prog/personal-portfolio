@@ -11,7 +11,7 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
   return (
     <section id="home" className="relative min-h-svh overflow-hidden bg-ink-deep text-background">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_480px_at_85%_20%,rgba(26,154,144,0.35),transparent_55%),radial-gradient(700px_420px_at_10%_80%,rgba(14,124,116,0.28),transparent_50%)]" />
-      <div className="relative mx-auto grid min-h-svh w-full max-w-[1440px] items-end gap-12 px-5 pt-32 pb-28 sm:px-8 lg:grid-cols-12 lg:px-12 lg:pt-36">
+      <div className="relative mx-auto grid min-h-svh w-full max-w-[1440px] items-center gap-10 px-5 pt-24 pb-20 sm:px-8 lg:grid-cols-12 lg:px-12">
         <div className="lg:col-span-7">
           <p className="font-mono text-xs tracking-[0.22em] text-sun uppercase">{profile.heroLabel}</p>
           {profile.availabilityLabel ? (
@@ -19,7 +19,7 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
               {profile.availabilityLabel}
             </p>
           ) : null}
-          <h1 className="mt-6 max-w-4xl font-display text-[clamp(3.3rem,8vw,7.2rem)] leading-[0.9] tracking-[-0.055em]">
+          <h1 className="mt-5 max-w-4xl font-display text-[clamp(2.8rem,6vw,5.6rem)] leading-[0.92] tracking-[-0.055em]">
             <AnimatedText text={profile.heroHeading} />
             <span className="block text-sun">
               <AnimatedText text={profile.heroAccent} />
