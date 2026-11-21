@@ -57,6 +57,7 @@ export function Projects({ projects, scenes = [] }: { projects: Project[]; scene
         ) : null}
 
         {scenes.length ? (
+          <>
           <p className="mt-10 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">The story so far. A written stand-in, not a recording.</p>
           <ol id="story" className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {scenes.map((scene, index) => (
@@ -67,6 +68,7 @@ export function Projects({ projects, scenes = [] }: { projects: Project[]; scene
               </li>
             ))}
           </ol>
+          </>
         ) : null}
       </div>
     </section>
