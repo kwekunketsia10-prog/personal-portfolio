@@ -184,6 +184,8 @@ function PracticeFrame({ fill }: { fill: boolean }) {
 
 function WorkMosaic({ projects, fill }: { projects: Project[]; fill: boolean }) {
   const shown = projects.slice(0, 5);
+  const reduce = useReducedMotion();
+  const [open, setOpen] = useState<string | null>(null);
 
   if (!fill) {
     return (
@@ -196,9 +198,16 @@ function WorkMosaic({ projects, fill }: { projects: Project[]; fill: boolean }) 
   }
 
   return (
-    <div className="flex h-full flex-col gap-2 bg-background p-3">
+    <div className="flex h-full flex-col gap-2 bg-background p-3" onMouseLeave={() => setOpen(null)}>
       {shown.map((project) => (
-        <ProjectStill key={project.slug} project={project} fill />
+        <ProjectStill
+          key={project.slug}
+          project={project}
+          fill
+          expanded={open === project.slug}
+          reduce={Boolean(reduce)}
+          onActivate={() => setOpen(project.slug)}
+        />
       ))}
     </div>
   );
@@ -223,15 +232,37 @@ function InvitationFrame({ scene, projects, fill }: { scene: StoryScene; project
   );
 }
 
-function ProjectStill({ project, featured = false, fill = false }: { project: Project; featured?: boolean; fill?: boolean }) {
+function ProjectStill({
+  project,
+  featured = false,
+  fill = false,
+  expanded = false,
+  reduce = false,
+  onActivate,
+}: {
+  project: Project;
+  featured?: boolean;
+  fill?: boolean;
+  expanded?: boolean;
+  reduce?: boolean;
+  onActivate?: () => void;
+}) {
   return (
-    <figure className={`relative overflow-hidden bg-background ${fill ? "min-h-0 flex-1" : featured ? "col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
+    <figure
+      onMouseEnter={onActivate}
+      className={`relative overflow-hidden bg-ink ${fill ? "min-h-11 basis-0" : featured ? "col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}
+      style={fill ? { flexGrow: expanded ? 6.5 : 1, transition: reduce ? "none" : "flex-grow 450ms ease" } : undefined}
+    >
       {project.desktopImage ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={project.desktopImage}
           alt=""
-          className={fill ? "absolute inset-0 h-full w-full object-cover object-top" : "h-full w-full object-cover object-top"}
+          className={
+            fill
+              ? `absolute inset-0 h-full w-full ${expanded ? "object-contain object-top" : "object-cover object-top"}`
+              : "h-full w-full object-cover object-top"
+          }
         />
       ) : null}
       <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/75 to-transparent px-3 py-2 font-mono text-[10px] tracking-[0.14em] text-background uppercase">
