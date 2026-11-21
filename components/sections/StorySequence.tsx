@@ -63,10 +63,10 @@ export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; proj
               </li>
             ))}
           </ol>
-          <div className="col-span-5 flex min-h-0 flex-col px-8 py-8 lg:px-10 lg:py-10">
+          <div className="col-span-5 flex min-h-0 min-w-0 flex-col justify-center px-8 py-8 lg:px-10">
             <SceneCopy scene={scene} index={active} />
           </div>
-          <div className="col-span-6 min-h-0 border-l border-line">
+          <div className="col-span-6 min-h-0 min-w-0 border-l border-line">
             <SceneVisual scene={scene} index={active} projects={projects} fill />
           </div>
         </article>
@@ -96,7 +96,7 @@ function SceneCopy({ scene, index }: { scene: StoryScene; index: number }) {
         {chapter}
       </p>
       <h3 className="mt-4 font-display text-[clamp(2rem,3.1vw,3.35rem)] leading-[0.98] tracking-[-0.045em]">{scene.onScreenText}</h3>
-      <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:min-h-0 md:flex-1 md:overflow-auto">{scene.voiceOver}</p>
+      <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">{scene.voiceOver}</p>
       {scene.closingHeadline ? (
         <p className="mt-6 font-display text-2xl tracking-tight text-lime md:hidden">{scene.closingHeadline}</p>
       ) : null}
@@ -187,7 +187,6 @@ function PracticeFrame({ fill }: { fill: boolean }) {
 
 function WorkMosaic({ projects, fill }: { projects: Project[]; fill: boolean }) {
   const shown = projects.slice(0, 5);
-  const [lead, ...rest] = shown;
 
   if (!fill) {
     return (
@@ -200,9 +199,8 @@ function WorkMosaic({ projects, fill }: { projects: Project[]; fill: boolean }) 
   }
 
   return (
-    <div className="grid h-full grid-cols-4 grid-rows-2 gap-2 p-3">
-      {lead ? <ProjectStill project={lead} featured fill /> : null}
-      {rest.map((project) => (
+    <div className="flex h-full flex-col gap-2 bg-background p-3">
+      {shown.map((project) => (
         <ProjectStill key={project.slug} project={project} fill />
       ))}
     </div>
@@ -230,7 +228,7 @@ function InvitationFrame({ scene, projects, fill }: { scene: StoryScene; project
 
 function ProjectStill({ project, featured = false, fill = false }: { project: Project; featured?: boolean; fill?: boolean }) {
   return (
-    <figure className={`relative overflow-hidden bg-background ${fill ? `min-h-0 ${featured ? "col-span-2 row-span-2" : ""}` : featured ? "col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
+    <figure className={`relative overflow-hidden bg-background ${fill ? "min-h-0 flex-1" : featured ? "col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
       {project.desktopImage ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
