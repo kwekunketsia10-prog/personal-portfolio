@@ -23,10 +23,10 @@ export function Footer({ profile, projects }: { profile: Profile; projects: Proj
 
   return (
     <footer className="bg-ink-deep text-background">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-8 px-5 py-16 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-12 lg:py-20">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-5 py-10 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-12 lg:py-12">
         <div className="max-w-xl">
           <p className="font-mono text-xs tracking-[0.2em] text-sun uppercase">Start a project</p>
-          <h2 className="mt-4 font-display text-[clamp(2.4rem,5vw,4.4rem)] leading-[0.96] tracking-[-0.045em]">
+          <h2 className="mt-3 font-display text-[clamp(2.1rem,4vw,3.4rem)] leading-[0.96] tracking-[-0.045em]">
             Have an idea worth a website?
           </h2>
         </div>
@@ -40,19 +40,19 @@ export function Footer({ profile, projects }: { profile: Profile; projects: Proj
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto grid w-full max-w-[1440px] gap-12 px-5 py-14 sm:px-8 md:grid-cols-2 lg:grid-cols-12 lg:px-12">
+        <div className="mx-auto grid w-full max-w-[1440px] gap-8 px-5 py-8 sm:px-8 md:grid-cols-2 lg:grid-cols-12 lg:px-12">
           <div className="lg:col-span-4">
             <p className="font-display text-3xl tracking-tight">{profile.name}</p>
             <p className="mt-2 font-mono text-[11px] tracking-[0.18em] text-sun uppercase">{profile.title}</p>
-            <p className="mt-5 max-w-sm leading-relaxed text-background/70">
+            <p className="mt-3 max-w-sm leading-relaxed text-background/70">
               Designing and building digital experiences, one project at a time.
             </p>
-            <SocialLinks profile={profile} tone="light" className="mt-6" />
+            <SocialLinks profile={profile} tone="light" className="mt-4" />
           </div>
 
           <nav className="lg:col-span-2" aria-label="Footer">
             <p className="font-display text-lg">Explore</p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-3 space-y-2">
               {footerNavigation.map((item) => (
                 <li key={item.id}>
                   <a href={sectionHref(item.id, pathname)} className="text-background/70 hover:text-background">
@@ -65,7 +65,7 @@ export function Footer({ profile, projects }: { profile: Profile; projects: Proj
 
           <div className="lg:col-span-3">
             <p className="font-display text-lg">Selected work</p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-3 space-y-2">
               {work.map((project) => (
                 <li key={project.slug}>
                   <a href={`/projects/${project.slug}`} className="text-background/70 hover:text-background">
@@ -78,7 +78,7 @@ export function Footer({ profile, projects }: { profile: Profile; projects: Proj
 
           <div className="lg:col-span-3">
             <p className="font-display text-lg">Contact</p>
-            <ul className="mt-5 space-y-3 text-background/70">
+            <ul className="mt-3 space-y-2 text-background/70">
               {profile.email ? (
                 <li>
                   <a className="hover:text-background" href={`mailto:${profile.email}`}>

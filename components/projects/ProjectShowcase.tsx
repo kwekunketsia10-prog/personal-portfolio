@@ -10,8 +10,8 @@ export function ProjectShowcase({ project, index }: { project: Project; index: n
   const split = project.layout === "split" || reversed;
 
   return (
-    <article className="group border-t border-line py-16 md:py-24">
-      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+    <article className="group border-t border-line py-8 md:py-10">
+      <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <p className="font-mono text-xs tracking-[0.2em] text-lime uppercase">
           {number} — {project.category}
         </p>
@@ -19,7 +19,7 @@ export function ProjectShowcase({ project, index }: { project: Project; index: n
       </div>
 
       {split ? (
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-10">
           <div className={cn(reversed && "lg:order-2")}>
             <ProjectBrowserMockup
               src={project.desktopImage}
@@ -31,7 +31,7 @@ export function ProjectShowcase({ project, index }: { project: Project; index: n
         </div>
       ) : (
         <div>
-          <div className={cn("relative", project.layout === "mobile-float" && "mb-16 md:mb-8")}>
+          <div className={cn("relative", project.layout === "mobile-float" && "mb-12 md:mb-6")}>
             <ProjectBrowserMockup
               src={project.desktopImage}
               alt={`${project.name} homepage`}
@@ -44,7 +44,7 @@ export function ProjectShowcase({ project, index }: { project: Project; index: n
               </div>
             ) : null}
           </div>
-          <div className={cn("mt-8 grid gap-8 lg:grid-cols-12", project.layout === "mobile-float" && "md:mt-20")}>
+          <div className={cn("mt-6 grid gap-6 lg:grid-cols-12", project.layout === "mobile-float" && "md:mt-12")}>
             <h3 className="font-display text-[clamp(2.4rem,5vw,4.5rem)] leading-[0.95] tracking-[-0.045em] lg:col-span-7">
               {project.name}
             </h3>
@@ -72,8 +72,8 @@ function ProjectCopy({
           {project.name}
         </h3>
       )}
-      <p className="mt-5 text-lg leading-relaxed text-muted">{project.summary}</p>
-      <ul className="mt-6 space-y-2">
+      <p className="mt-3 text-lg leading-relaxed text-muted">{project.summary}</p>
+      <ul className="mt-4 space-y-1.5">
         {project.highlights.slice(0, 4).map((item) => (
           <li key={item} className="flex gap-3 text-sm text-ink">
             <span className="mt-2 h-px w-4 shrink-0 bg-lime" />
@@ -81,11 +81,11 @@ function ProjectCopy({
           </li>
         ))}
       </ul>
-      <p className="mt-6 font-mono text-[11px] tracking-[0.14em] text-muted uppercase">
+      <p className="mt-4 font-mono text-[11px] tracking-[0.14em] text-muted uppercase">
         {project.technologies.join(" · ")}
         {project.host ? ` · Hosted on ${project.host}` : ""}
       </p>
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
         <a
           href={project.liveUrl}
           target="_blank"

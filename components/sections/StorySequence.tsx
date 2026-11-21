@@ -39,7 +39,7 @@ export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; proj
 
   if (reduce || !desktop) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-4">
         {scenes.map((scene, index) => (
           <Scene key={scene.id} scene={scene} index={index} projects={projects} />
         ))}
@@ -78,7 +78,7 @@ export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; proj
 
 function Scene({ scene, index, projects }: { scene: StoryScene; index: number; projects: Project[] }) {
   return (
-    <div className="grid items-stretch gap-6 rounded-3xl border border-line bg-surface p-5 sm:p-8">
+    <div className="grid items-stretch gap-4 rounded-3xl border border-line bg-surface p-5">
       <SceneCopy scene={scene} index={index} />
       <SceneVisual scene={scene} index={index} projects={projects} />
     </div>
@@ -96,12 +96,12 @@ function SceneCopy({ scene, index }: { scene: StoryScene; index: number }) {
         <span className="mx-2 text-muted">/</span>
         {chapter}
       </p>
-      <h3 className="mt-4 font-display text-[clamp(2rem,3.1vw,3.35rem)] leading-[0.98] tracking-[-0.045em]">{scene.onScreenText}</h3>
-      <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">{scene.voiceOver}</p>
+      <h3 className="mt-3 font-display text-[clamp(1.7rem,2.6vw,2.6rem)] leading-[1] tracking-[-0.045em]">{scene.onScreenText}</h3>
+      <p className="mt-3 max-w-xl text-base leading-relaxed text-muted">{scene.voiceOver}</p>
       {scene.ctaLabel ? (
         <a
           href="#contact"
-          className="mt-6 inline-flex min-h-12 w-fit items-center rounded-full bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep md:mt-8"
+          className="mt-4 inline-flex min-h-12 w-fit items-center rounded-full bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep"
         >
           {scene.ctaLabel}
         </a>

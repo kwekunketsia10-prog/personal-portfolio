@@ -58,25 +58,25 @@ export function Contact({ profile }: { profile: Profile }) {
   }
 
   return (
-    <section id="contact" className="scroll-mt-24 bg-wash py-24 md:py-32">
-      <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:px-12">
+    <section id="contact" className="scroll-mt-24 bg-wash py-12 md:py-16">
+      <div className="mx-auto grid w-full max-w-[1440px] gap-8 px-5 sm:px-8 lg:grid-cols-12 lg:px-12">
         <div className="lg:col-span-5">
-          <h2 className="font-display text-[clamp(2.6rem,6vw,5rem)] leading-[0.94] tracking-[-0.045em]">
+          <h2 className="font-display text-[clamp(2.2rem,4.6vw,3.8rem)] leading-[0.96] tracking-[-0.045em]">
             Have a project in mind?
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-muted">
+          <p className="mt-3 text-lg leading-relaxed text-muted">
             Tell me a little about your business or idea. I&apos;d love to hear what you&apos;re planning.
           </p>
-          <div className="mt-8 space-y-3 text-ink">
+          <div className="mt-5 space-y-2 text-ink">
             {profile.email ? <p><a className="hover:text-lime" href={`mailto:${profile.email}`}>{profile.email}</a></p> : <p className="text-muted">Email: add yours in the admin.</p>}
             {profile.whatsapp ? <p>WhatsApp: {profile.whatsapp}</p> : null}
             {profile.location ? <p className="text-muted">{profile.location}</p> : null}
           </div>
-          <SocialLinks profile={profile} className="mt-8" />
+          <SocialLinks profile={profile} className="mt-5" />
         </div>
 
-        <form onSubmit={onSubmit} noValidate className="rounded-3xl border border-line bg-surface p-6 shadow-[0_20px_50px_rgba(14,124,116,0.08)] sm:p-8 lg:col-span-7">
-          <div className="grid gap-6 sm:grid-cols-2">
+        <form onSubmit={onSubmit} noValidate className="rounded-3xl border border-line bg-surface p-5 shadow-[0_20px_50px_rgba(14,124,116,0.08)] sm:p-6 lg:col-span-7">
+          <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Full name" name="fullName" error={errors.fullName} autoComplete="name" />
             <Field label="Email address" name="email" type="email" error={errors.email} autoComplete="email" />
             <Field label="Business name" name="businessName" optional autoComplete="organization" />
@@ -93,14 +93,14 @@ export function Contact({ profile }: { profile: Profile }) {
             <Field label="Project budget" name="budget" optional className="sm:col-span-2" />
             <label className="block sm:col-span-2">
               <span className="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">Message</span>
-              <textarea name="message" rows={6} className="mt-3 w-full resize-y border-b border-line bg-transparent py-3 text-ink outline-none" />
+              <textarea name="message" rows={4} className="mt-3 w-full resize-y border-b border-line bg-transparent py-3 text-ink outline-none" />
               {errors.message ? <span className="mt-2 block text-sm text-lime">{errors.message}</span> : null}
             </label>
           </div>
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep disabled:opacity-60"
+            className="mt-5 inline-flex min-h-12 items-center rounded-full bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep disabled:opacity-60"
           >
             {status === "submitting" ? "Sending" : "Send project enquiry"}
           </button>

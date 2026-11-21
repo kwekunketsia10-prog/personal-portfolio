@@ -5,18 +5,18 @@ import type { Project } from "@/lib/types";
 
 export function ProjectDetails({ project }: { project: Project }) {
   return (
-    <article className="mx-auto w-full max-w-[1440px] px-5 pt-32 pb-24 sm:px-8 lg:px-12">
+    <article className="mx-auto w-full max-w-[1440px] px-5 pt-24 pb-12 sm:px-8 lg:px-12">
       <Link href="/#projects" className="inline-flex items-center gap-2 font-mono text-xs tracking-[0.16em] text-muted uppercase hover:text-lime">
         <ArrowLeft size={14} /> Selected work
       </Link>
-      <p className="mt-10 font-mono text-xs tracking-[0.2em] text-lime uppercase">
+      <p className="mt-6 font-mono text-xs tracking-[0.2em] text-lime uppercase">
         {project.category} · Self-initiated project
       </p>
-      <h1 className="mt-4 max-w-5xl font-display text-[clamp(3rem,7vw,6.5rem)] leading-[0.92] tracking-[-0.05em]">
+      <h1 className="mt-3 max-w-5xl font-display text-[clamp(2.6rem,5.5vw,4.8rem)] leading-[0.94] tracking-[-0.05em]">
         {project.name}
       </h1>
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{project.summary}</p>
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+      <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{project.summary}</p>
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row">
         <a
           href={project.liveUrl}
           target="_blank"
@@ -27,12 +27,12 @@ export function ProjectDetails({ project }: { project: Project }) {
         </a>
       </div>
 
-      <div className="mt-14">
+      <div className="mt-8">
         <ProjectBrowserMockup src={project.desktopImage} alt={`${project.name} homepage`} url={project.liveUrl} priority />
       </div>
 
-      <div className="mt-16 grid gap-12 lg:grid-cols-12">
-        <div className="space-y-10 lg:col-span-7">
+      <div className="mt-10 grid gap-8 lg:grid-cols-12">
+        <div className="space-y-6 lg:col-span-7">
           <Detail label="Project objective" text={project.objective} />
           <Detail label="Design direction" text={project.designDirection} />
           <div>

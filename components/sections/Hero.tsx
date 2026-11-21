@@ -9,7 +9,7 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
   return (
     <section id="home" className="relative min-h-svh overflow-hidden bg-ink-deep text-background">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_480px_at_85%_20%,rgba(26,154,144,0.35),transparent_55%),radial-gradient(700px_420px_at_10%_80%,rgba(14,124,116,0.28),transparent_50%)]" />
-      <div className="relative mx-auto grid min-h-svh w-full max-w-[1440px] items-center gap-10 px-5 pt-24 pb-20 sm:px-8 lg:grid-cols-12 lg:px-12">
+      <div className="relative mx-auto grid min-h-svh w-full max-w-[1440px] items-center gap-8 px-5 pt-20 pb-14 sm:px-8 lg:grid-cols-12 lg:px-12">
         <div className="lg:col-span-7">
           <p className="font-mono text-xs tracking-[0.22em] text-sun uppercase">{profile.heroLabel}</p>
           {profile.availabilityLabel ? (
@@ -17,15 +17,15 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
               {profile.availabilityLabel}
             </p>
           ) : null}
-          <h1 className="mt-5 max-w-4xl font-display text-[clamp(2.8rem,6vw,5.6rem)] leading-[0.92] tracking-[-0.055em]">
+          <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.6rem,5vw,4.6rem)] leading-[0.94] tracking-[-0.055em]">
             <AnimatedText text={profile.heroHeading} />
             <span className="block text-sun">
               <AnimatedText text={profile.heroAccent} />
             </span>
           </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-background/85">{profile.heroBody}</p>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-background/65">{profile.heroSupport}</p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-background/85">{profile.heroBody}</p>
+          <p className="mt-3 max-w-xl text-lg leading-relaxed text-background/65">{profile.heroSupport}</p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <a href="#projects" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.14em] text-background uppercase hover:bg-lime-deep">
               Explore my work
               <ArrowRight size={16} />
