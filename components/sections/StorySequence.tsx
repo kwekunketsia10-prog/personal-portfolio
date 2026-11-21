@@ -56,7 +56,7 @@ export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; proj
 
 function Scene({ scene, index, projects }: { scene: StoryScene; index: number; projects: Project[] }) {
   return (
-    <div className="grid w-full items-center gap-8 border border-line bg-[#10141a]/90 p-6 md:grid-cols-12 md:p-10">
+    <div className="grid w-full items-center gap-8 border border-line bg-surface p-6 md:grid-cols-12 md:p-10">
       <div className="md:col-span-6">
         <p className="font-mono text-xs tracking-[0.2em] text-lime uppercase">Scene 0{index + 1}</p>
         <h3 className="mt-4 font-display text-[clamp(2.2rem,4.6vw,4.4rem)] leading-[0.95] tracking-[-0.045em]">
@@ -70,7 +70,7 @@ function Scene({ scene, index, projects }: { scene: StoryScene; index: number; p
         {scene.ctaLabel ? (
           <a
             href="#contact"
-            className="mt-6 inline-flex min-h-12 items-center bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-ink"
+            className="mt-6 inline-flex min-h-12 items-center bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.16em] text-ink uppercase hover:bg-lime-deep"
           >
             {scene.ctaLabel}
           </a>

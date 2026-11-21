@@ -19,12 +19,12 @@ export function ProjectBrowserMockup({
   imageClassName = "",
 }: MockupProps) {
   return (
-    <div className={`overflow-hidden border border-line bg-secondary shadow-[0_30px_80px_rgba(0,0,0,0.28)] ${className}`}>
+    <div className={`overflow-hidden border border-line bg-surface shadow-[0_28px_70px_rgba(91,70,245,0.16)] ${className}`}>
       <div className="flex items-center gap-3 border-b border-line px-4 py-3">
         <span className="flex gap-1.5" aria-hidden="true">
-          <i className="size-2.5 rounded-full bg-white/20" />
-          <i className="size-2.5 rounded-full bg-white/20" />
-          <i className="size-2.5 rounded-full bg-white/20" />
+          <i className="size-2.5 rounded-full bg-lime" />
+          <i className="size-2.5 rounded-full bg-sun" />
+          <i className="size-2.5 rounded-full bg-sky" />
         </span>
         <span className="truncate font-mono text-[11px] text-muted">{displayHost(url)}</span>
       </div>
@@ -62,7 +62,7 @@ export function MobilePreview({ src, alt }: { src: string; alt: string }) {
 
 export function ScreenshotSlot({ label }: { label: string }) {
   return (
-    <div className="flex h-full min-h-48 flex-col justify-between bg-[linear-gradient(160deg,#171c22,#080a0c)] p-6">
+    <div className="flex h-full min-h-48 flex-col justify-between bg-[linear-gradient(160deg,#ffe3f4,#e5f7ff)] p-6">
       <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">Screenshot slot</p>
       <p className="max-w-xs font-display text-3xl leading-none tracking-tight">{label}</p>
       <p className="text-sm text-muted">16:10 desktop or 9:19 mobile. Replace this frame from the admin.</p>

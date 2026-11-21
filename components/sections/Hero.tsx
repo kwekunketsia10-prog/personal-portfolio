@@ -26,7 +26,7 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
           <p className="mt-8 max-w-xl text-lg leading-relaxed text-ink">{profile.heroBody}</p>
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">{profile.heroSupport}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href="#projects" className="inline-flex min-h-12 items-center justify-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-ink">
+            <a href="#projects" className="inline-flex min-h-12 items-center justify-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-ink uppercase hover:bg-lime-deep">
               Explore my work
             </a>
             <a href="#contact" className="inline-flex min-h-12 items-center justify-center border border-line px-6 text-[0.78rem] font-semibold tracking-[0.16em] uppercase hover:border-lime hover:text-lime">
@@ -52,7 +52,7 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
             ) : null}
           </div>
           {secondary ? (
-            <div className="float-slower absolute -bottom-8 -left-6 z-20 hidden w-[46%] border border-line bg-[#0d1014] p-3 shadow-2xl md:block">
+            <div className="float-slower absolute -bottom-8 -left-6 z-20 hidden w-[46%] border border-line bg-surface p-3 shadow-2xl md:block">
               <p className="font-mono text-[10px] tracking-[0.16em] text-lime uppercase">Live preview</p>
               <p className="mt-2 font-display text-xl tracking-tight">{secondary.name}</p>
               <p className="mt-1 text-xs text-muted">{secondary.category}</p>

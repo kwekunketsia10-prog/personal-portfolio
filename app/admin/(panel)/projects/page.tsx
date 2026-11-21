@@ -7,7 +7,7 @@ export default async function ProjectsAdminPage() {
     <section>
       <div className="flex items-end justify-between gap-4">
         <h1 className="font-display text-5xl tracking-tight">Projects</h1>
-        <Link href="/admin/projects/new" className="bg-lime px-4 py-3 text-sm font-semibold tracking-[0.12em] text-background uppercase">
+        <Link href="/admin/projects/new" className="bg-lime px-4 py-3 text-sm font-semibold tracking-[0.12em] text-ink uppercase">
           New project
         </Link>
       </div>

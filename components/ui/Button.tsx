@@ -16,7 +16,7 @@ export function Button({ href, children, variant = "primary", className, externa
       className={cn(
         "inline-flex min-h-12 items-center justify-center gap-2 px-5 text-[0.78rem] font-semibold tracking-[0.16em] uppercase transition",
         variant === "primary"
-          ? "bg-lime text-background hover:bg-ink"
+          ? "bg-lime text-ink hover:bg-lime-deep"
           : "border border-line text-ink hover:border-lime hover:text-lime",
         className,
       )}

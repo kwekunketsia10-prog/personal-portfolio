@@ -99,7 +99,7 @@ export default async function EditProjectPage({
           Mobile screenshot
           <input name="mobileImage" type="file" accept="image/*" className="mt-2 block" />
         </label>
-        <button className="inline-flex min-h-12 w-fit items-center bg-lime px-5 text-sm font-semibold tracking-[0.14em] text-background uppercase">
+        <button className="inline-flex min-h-12 w-fit items-center bg-lime px-5 text-sm font-semibold tracking-[0.14em] text-ink uppercase">
           Save project
         </button>
       </form>

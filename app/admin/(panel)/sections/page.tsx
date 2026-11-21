@@ -76,7 +76,7 @@ export default async function SectionsPage({
             </fieldset>
           ))}
         </Group>
-        <button className="inline-flex min-h-12 items-center bg-lime px-5 text-sm font-semibold tracking-[0.14em] text-background uppercase">
+        <button className="inline-flex min-h-12 items-center bg-lime px-5 text-sm font-semibold tracking-[0.14em] text-ink uppercase">
           Save sections
         </button>
       </form>

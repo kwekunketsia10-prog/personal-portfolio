@@ -1,7 +1,7 @@
 import type { Profile } from "@/lib/types";
 
 export const profile: Profile = {
-  name: "Your Name",
+  name: "Kweku Nketsia Eshun",
   title: "Web Developer",
   location: "",
   email: "",
@@ -21,7 +21,7 @@ export const profile: Profile = {
   journeyPosterPath: "",
   journeyCaptionsPath: "",
   journeyVideoAutoplay: false,
-  seoTitle: "Your Name | Web Developer — Designing and Building Websites",
+  seoTitle: "Kweku Nketsia Eshun | Web Developer — Designing and Building Websites",
   seoDescription:
-    "Explore the portfolio of Your Name, a web developer who designs and builds modern websites for businesses and brands.",
+    "Explore the portfolio of Kweku Nketsia Eshun, a web developer who designs and builds modern websites for businesses and brands.",
 };

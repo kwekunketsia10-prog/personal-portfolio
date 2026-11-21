@@ -58,7 +58,7 @@ export function Contact({ profile }: { profile: Profile }) {
   }
 
   return (
-    <section id="contact" className="scroll-mt-24 py-24 md:py-32">
+    <section id="contact" className="scroll-mt-24 bg-wash py-24 md:py-32">
       <div className="mx-auto grid w-full max-w-[1440px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:px-12">
         <div className="lg:col-span-5">
           <h2 className="font-display text-[clamp(2.6rem,6vw,5rem)] leading-[0.94] tracking-[-0.045em]">
@@ -100,7 +100,7 @@ export function Contact({ profile }: { profile: Profile }) {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="mt-8 inline-flex min-h-12 items-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-ink disabled:opacity-60"
+            className="mt-8 inline-flex min-h-12 items-center bg-lime px-6 text-[0.78rem] font-semibold tracking-[0.16em] text-ink uppercase hover:bg-lime-deep disabled:opacity-60"
           >
             {status === "submitting" ? "Sending" : "Send project enquiry"}
           </button>
