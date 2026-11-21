@@ -122,7 +122,7 @@ export function Navbar({ profile }: { profile: Profile }) {
           </a>
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink lg:hidden"
+            className={`inline-flex size-11 items-center justify-center rounded-full border lg:hidden ${overHero ? "border-background/30 text-background" : "border-line text-ink"}`}
             aria-expanded={open}
             aria-controls={menuId}
             onClick={() => setOpen((value) => !value)}
