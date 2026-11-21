@@ -97,9 +97,6 @@ function SceneCopy({ scene, index }: { scene: StoryScene; index: number }) {
       </p>
       <h3 className="mt-4 font-display text-[clamp(2rem,3.1vw,3.35rem)] leading-[0.98] tracking-[-0.045em]">{scene.onScreenText}</h3>
       <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">{scene.voiceOver}</p>
-      {scene.closingHeadline ? (
-        <p className="mt-6 font-display text-2xl tracking-tight text-lime md:hidden">{scene.closingHeadline}</p>
-      ) : null}
       {scene.ctaLabel ? (
         <a
           href="#contact"
