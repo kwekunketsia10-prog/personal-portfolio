@@ -23,6 +23,7 @@ const mono = DM_Mono({
 
 const hero = Fraunces({
   subsets: ["latin"],
+  style: ["normal", "italic"],
   variable: "--font-hero",
   display: "swap",
 });
