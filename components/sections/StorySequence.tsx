@@ -4,6 +4,8 @@ import { useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import type { Project, StoryScene } from "@/lib/types";
 
+const chapters = ["Idea", "Practice", "Work", "Next"];
+
 export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; projects: Project[] }) {
   const reduce = useReducedMotion();
   const [active, setActive] = useState(0);
@@ -45,167 +47,180 @@ export function StorySequence({ scenes, projects }: { scenes: StoryScene[]; proj
     );
   }
 
+  const scene = scenes[active] ?? scenes[0];
+
   return (
     <div ref={track} className="relative h-[420vh]">
-      <div className="sticky top-0 flex h-svh items-center pt-20 pb-8">
-        <Scene scene={scenes[active] ?? scenes[0]} index={active} projects={projects} />
+      <div className="sticky top-0 flex h-svh flex-col pt-[4.5rem] pb-6">
+        <article className="grid h-full min-h-0 grid-cols-12 overflow-hidden border border-line bg-surface">
+          <ol className="col-span-1 flex flex-col justify-between border-r border-line py-8" aria-label="Story scenes">
+            {scenes.map((item, index) => (
+              <li key={item.id} className="flex flex-col items-center gap-3" aria-current={index === active ? "step" : undefined}>
+                <span className={`font-mono text-xs ${index === active ? "text-lime" : "text-muted"}`}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className={`h-10 w-px ${index === active ? "bg-lime" : "bg-line"}`} aria-hidden="true" />
+              </li>
+            ))}
+          </ol>
+          <div className="col-span-5 flex min-h-0 flex-col px-8 py-8 lg:px-10 lg:py-10">
+            <SceneCopy scene={scene} index={active} />
+          </div>
+          <div className="col-span-6 min-h-0 border-l border-line">
+            <SceneVisual scene={scene} index={active} projects={projects} fill />
+          </div>
+        </article>
       </div>
     </div>
   );
 }
 
 function Scene({ scene, index, projects }: { scene: StoryScene; index: number; projects: Project[] }) {
-  const number = String(index + 1).padStart(2, "0");
-
   return (
-    <div className="grid w-full items-stretch gap-8 border border-line bg-surface p-5 sm:p-8 md:grid-cols-12 md:p-10">
-      <div className="flex flex-col justify-center md:col-span-5">
-        <p className="font-mono text-xs text-lime uppercase">
-          <span className="tracking-[0.22em]">Scene</span>
-          <span className="ml-2">{number}</span>
-        </p>
-        <h3 className="mt-4 font-display text-[clamp(2rem,3.6vw,3.5rem)] leading-[0.96] tracking-[-0.045em]">
-          {scene.onScreenText}
-        </h3>
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:text-lg">{scene.voiceOver}</p>
-        <p className="mt-4 font-mono text-[11px] tracking-[0.14em] text-muted uppercase">Voice-over placeholder</p>
-        {scene.closingHeadline ? (
-          <p className="mt-6 font-display text-2xl tracking-tight text-lime md:text-3xl">{scene.closingHeadline}</p>
-        ) : null}
-        {scene.ctaLabel ? (
-          <a
-            href="#contact"
-            className="mt-6 inline-flex min-h-12 w-fit items-center bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep"
-          >
-            {scene.ctaLabel}
-          </a>
-        ) : null}
-      </div>
-      <div className="md:col-span-7">
-        <SceneVisual index={index} projects={projects} />
-      </div>
+    <div className="grid items-stretch gap-6 border border-line bg-surface p-5 sm:p-8">
+      <SceneCopy scene={scene} index={index} />
+      <SceneVisual scene={scene} index={index} projects={projects} />
     </div>
   );
 }
 
-function WindowBar({ label }: { label: string }) {
+function SceneCopy({ scene, index }: { scene: StoryScene; index: number }) {
+  const number = String(index + 1).padStart(2, "0");
+  const chapter = chapters[index] ?? "Scene";
+
+  return (
+    <>
+      <p className="font-mono text-xs tracking-[0.18em] text-lime uppercase">
+        {number}
+        <span className="mx-2 text-muted">/</span>
+        {chapter}
+      </p>
+      <h3 className="mt-4 font-display text-[clamp(2rem,3.1vw,3.35rem)] leading-[0.98] tracking-[-0.045em]">{scene.onScreenText}</h3>
+      <p className="mt-5 max-w-xl text-base leading-relaxed text-muted md:min-h-0 md:flex-1 md:overflow-auto">{scene.voiceOver}</p>
+      {scene.closingHeadline ? (
+        <p className="mt-6 font-display text-2xl tracking-tight text-lime md:hidden">{scene.closingHeadline}</p>
+      ) : null}
+      {scene.ctaLabel ? (
+        <a
+          href="#contact"
+          className="mt-6 inline-flex min-h-12 w-fit items-center bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.16em] text-background uppercase hover:bg-lime-deep md:mt-8"
+        >
+          {scene.ctaLabel}
+        </a>
+      ) : null}
+    </>
+  );
+}
+
+function SceneVisual({
+  scene,
+  index,
+  projects,
+  fill = false,
+}: {
+  scene: StoryScene;
+  index: number;
+  projects: Project[];
+  fill?: boolean;
+}) {
+  if (index === 0) return <IdeaFrame fill={fill} />;
+  if (index === 1) return <PracticeFrame fill={fill} />;
+  if (index === 2) return <WorkMosaic projects={projects} fill={fill} />;
+  return <InvitationFrame scene={scene} projects={projects} fill={fill} />;
+}
+
+function WindowBar() {
   return (
     <div className="flex items-center gap-3 border-b border-line px-4 py-3">
       <span className="flex gap-1.5" aria-hidden="true">
-        <i className="size-2.5 rounded-full bg-lime" />
-        <i className="size-2.5 rounded-full bg-sun" />
-        <i className="size-2.5 rounded-full bg-sky" />
+        <i className="size-2 rounded-full bg-lime" />
+        <i className="size-2 rounded-full bg-sun" />
+        <i className="size-2 rounded-full bg-sky" />
       </span>
-      <span className="font-mono text-[11px] text-muted">{label}</span>
+      <span className="font-mono text-[11px] text-muted">new page</span>
     </div>
   );
 }
 
-function SceneVisual({ index, projects }: { index: number; projects: Project[] }) {
-  if (index === 0) return <IdeaFrame />;
-  if (index === 1) return <PracticeFrame />;
-  if (index === 2) return <WorkMosaic projects={projects} />;
-  return <InvitationFrame projects={projects} />;
-}
-
-function IdeaFrame() {
+function IdeaFrame({ fill }: { fill: boolean }) {
   return (
-    <div className="flex h-full min-h-72 flex-col border border-line bg-background">
-      <WindowBar label="idea.tsx" />
-      <div className="flex flex-1 flex-col justify-between p-5 font-mono text-sm leading-8 sm:p-6">
-        <p className="text-lime">// where it starts</p>
-        <div className="my-6 space-y-1 text-muted">
-          <p>
-            <span className="text-ink">const</span> idea = curiosity
-          </p>
-          <p>
-            <span className="text-ink">const</span> page = open(browser)
-          </p>
-          <p>write(page, idea)</p>
-        </div>
-        <div className="grid grid-cols-3 gap-2" aria-hidden="true">
-          <span className="h-2 bg-lime" />
-          <span className="h-2 bg-indigo" />
-          <span className="h-2 bg-sun" />
+    <div className={`flex items-center bg-secondary ${fill ? "h-full px-8 lg:px-12" : "min-h-80 p-6"}`}>
+      <div className="w-full border border-line bg-surface shadow-[0_24px_50px_rgba(14,124,116,0.1)]">
+        <WindowBar />
+        <div className="p-6 sm:p-8">
+          <p className="font-mono text-[11px] tracking-[0.16em] text-lime uppercase">Before the first line</p>
+          <p className="mt-4 font-display text-3xl leading-none tracking-tight sm:text-4xl">A blank page, waiting.</p>
+          <div className="mt-6 space-y-2" aria-hidden="true">
+            <span className="block h-1.5 w-full bg-ink/10" />
+            <span className="block h-1.5 w-4/5 bg-ink/10" />
+            <span className="block h-1.5 w-3/5 bg-ink/10" />
+          </div>
+          <span className="mt-8 block h-9 w-32 bg-lime" aria-hidden="true" />
         </div>
       </div>
     </div>
   );
 }
 
-function PracticeFrame() {
-  const tiles = [
-    { label: "Layout", body: <LayoutMark /> },
-    { label: "Type", body: <p className="font-display text-5xl leading-none tracking-tight">Aa</p> },
-    { label: "Colour", body: <ColourMark /> },
-    { label: "Motion", body: <MotionMark /> },
+function PracticeFrame({ fill }: { fill: boolean }) {
+  const steps = [
+    { title: "Layout", note: "Give the page a structure." },
+    { title: "Type", note: "Give the words a voice." },
+    { title: "Colour", note: "Keep the palette deliberate." },
+    { title: "Motion", note: "Move only what helps." },
   ];
 
   return (
-    <div className="grid h-full grid-cols-2 gap-3">
-      {tiles.map((tile) => (
-        <div key={tile.label} className="flex min-h-36 flex-col justify-between border border-line bg-background p-4">
-          <p className="font-mono text-[11px] tracking-[0.16em] text-lime uppercase">{tile.label}</p>
-          <div className="mt-6">{tile.body}</div>
+    <div className={fill ? "grid h-full grid-rows-4" : "divide-y divide-line border border-line"}>
+      {steps.map((step, index) => (
+        <div key={step.title} className={`flex items-center justify-between gap-4 px-6 ${fill ? "border-b border-line last:border-b-0" : "py-5"} ${index % 2 === 0 ? "bg-background" : "bg-secondary"}`}>
+          <div>
+            <p className="font-mono text-[11px] tracking-[0.16em] text-lime">{String(index + 1).padStart(2, "0")}</p>
+            <p className="mt-1 font-display text-2xl tracking-tight lg:text-3xl">{step.title}</p>
+          </div>
+          <p className="max-w-[11rem] text-right text-sm leading-snug text-muted">{step.note}</p>
         </div>
       ))}
     </div>
   );
 }
 
-function LayoutMark() {
-  return (
-    <div className="space-y-2" aria-hidden="true">
-      <span className="block h-2 w-full bg-ink/80" />
-      <span className="block h-2 w-4/5 bg-indigo" />
-      <span className="block h-2 w-2/3 bg-lime" />
-    </div>
-  );
-}
+function WorkMosaic({ projects, fill }: { projects: Project[]; fill: boolean }) {
+  const shown = projects.slice(0, 5);
+  const [lead, ...rest] = shown;
 
-function ColourMark() {
-  return (
-    <div className="flex gap-2" aria-hidden="true">
-      <span className="size-8 bg-lime" />
-      <span className="size-8 bg-indigo" />
-      <span className="size-8 bg-sun" />
-    </div>
-  );
-}
-
-function MotionMark() {
-  return (
-    <div className="flex items-end gap-1.5" aria-hidden="true">
-      <span className="h-4 w-2 bg-sky" />
-      <span className="h-8 w-2 bg-indigo" />
-      <span className="h-6 w-2 bg-lime" />
-      <span className="h-10 w-2 bg-sun" />
-    </div>
-  );
-}
-
-function WorkMosaic({ projects }: { projects: Project[] }) {
-  const [lead, ...rest] = projects;
+  if (!fill) {
+    return (
+      <div className="grid grid-cols-2 gap-2">
+        {shown.map((project, index) => (
+          <ProjectStill key={project.slug} project={project} featured={index === 0} />
+        ))}
+      </div>
+    );
+  }
 
   return (
-    <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-      {lead ? <ProjectStill project={lead} featured /> : null}
+    <div className="grid h-full grid-cols-4 grid-rows-2 gap-2 p-3">
+      {lead ? <ProjectStill project={lead} featured fill /> : null}
       {rest.map((project) => (
-        <ProjectStill key={project.slug} project={project} />
+        <ProjectStill key={project.slug} project={project} fill />
       ))}
     </div>
   );
 }
 
-function InvitationFrame({ projects }: { projects: Project[] }) {
+function InvitationFrame({ scene, projects, fill }: { scene: StoryScene; projects: Project[]; fill: boolean }) {
   return (
-    <div className="flex h-full min-h-72 flex-col justify-between border border-line bg-[linear-gradient(165deg,#e7f3f1_0%,#f4f6f5_48%,#eaf4f6_100%)] p-6">
-      <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">What comes next</p>
-      <p className="max-w-sm font-display text-4xl leading-[0.95] tracking-tight md:text-5xl">Your idea, on a website people can open.</p>
-      <ul className="mt-8 flex flex-wrap gap-2">
-        {projects.map((project) => (
-          <li key={project.slug} className="border border-line bg-surface px-3 py-1.5 font-mono text-[10px] tracking-[0.12em] text-ink uppercase">
-            {project.name}
+    <div className={`flex flex-col justify-between bg-lime text-background ${fill ? "h-full px-8 py-8 lg:px-10" : "min-h-80 p-6"}`}>
+      <p className="font-mono text-[11px] tracking-[0.18em] text-background/70 uppercase">What comes next</p>
+      <p className="max-w-md font-display text-[clamp(2rem,3vw,3.4rem)] leading-[0.96] tracking-tight">
+        {scene.closingHeadline || "I can build your next website."}
+      </p>
+      <ul className="border-t border-background/25">
+        {projects.map((project, index) => (
+          <li key={project.slug} className="flex items-baseline justify-between gap-4 border-b border-background/25 py-2.5">
+            <span className="font-display text-lg tracking-tight">{project.name}</span>
+            <span className="font-mono text-[10px] tracking-[0.14em] text-background/70">{String(index + 1).padStart(2, "0")}</span>
           </li>
         ))}
       </ul>
@@ -213,18 +228,18 @@ function InvitationFrame({ projects }: { projects: Project[] }) {
   );
 }
 
-function ProjectStill({ project, featured = false }: { project: Project; featured?: boolean }) {
+function ProjectStill({ project, featured = false, fill = false }: { project: Project; featured?: boolean; fill?: boolean }) {
   return (
-    <figure className={`overflow-hidden border border-line bg-background ${featured ? "col-span-2 sm:col-span-4" : ""}`}>
+    <figure className={`relative overflow-hidden bg-background ${fill ? `min-h-0 ${featured ? "col-span-2 row-span-2" : ""}` : featured ? "col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
       {project.desktopImage ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={project.desktopImage}
           alt=""
-          className={`w-full object-cover object-top ${featured ? "aspect-[16/7]" : "aspect-[4/3]"}`}
+          className={fill ? "absolute inset-0 h-full w-full object-cover object-top" : "h-full w-full object-cover object-top"}
         />
       ) : null}
-      <figcaption className="truncate px-2 py-1.5 font-mono text-[10px] tracking-[0.12em] text-muted uppercase">
+      <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/75 to-transparent px-3 py-2 font-mono text-[10px] tracking-[0.14em] text-background uppercase">
         {project.name}
       </figcaption>
     </figure>
