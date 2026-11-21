@@ -2,7 +2,7 @@ import type { JourneyStage, ProcessStep } from "@/lib/types";
 
 export function Process({ steps, stages = [] }: { steps: ProcessStep[]; stages?: JourneyStage[] }) {
   return (
-    <section id="journey" className="scroll-mt-20 px-5 py-8 sm:px-8 lg:px-8">
+    <section id="journey" className="scroll-mt-20 bg-secondary px-5 py-16 sm:px-8 lg:px-8">
       <div className="mx-auto grid w-full max-w-[1180px] gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
         <div>
           <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">05 / How I work</p>

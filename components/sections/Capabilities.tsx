@@ -12,7 +12,7 @@ const icons: Record<string, LucideIcon> = {
 
 export function Capabilities({ items }: { items: Capability[] }) {
   return (
-    <section id="expertise" className="scroll-mt-20 px-5 py-6 sm:px-8 lg:px-8">
+    <section id="expertise" className="scroll-mt-20 bg-surface px-5 py-16 sm:px-8 lg:px-8">
       <div className="mx-auto grid w-full max-w-[1180px] items-start gap-8 lg:grid-cols-[0.72fr_1.28fr]">
         <div>
           <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">01 / What I can build</p>
@@ -27,7 +27,7 @@ export function Capabilities({ items }: { items: Capability[] }) {
           {items.map((item) => {
             const Icon = icons[item.icon] ?? Layers;
             return (
-              <article key={item.id} className="rounded-2xl bg-surface px-4 py-4">
+              <article key={item.id} className="rounded-2xl bg-secondary px-4 py-4">
                 <Icon size={16} className="text-lime" />
                 <h3 className="mt-3 font-display text-lg leading-tight tracking-tight">{item.title}</h3>
                 <p className="mt-1 text-sm leading-snug text-muted">{item.body}</p>

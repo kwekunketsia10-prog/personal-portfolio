@@ -10,7 +10,8 @@ export function Projects({ projects, scenes = [] }: { projects: Project[]; scene
   const rest = projects.slice(3);
 
   return (
-    <section id="projects" className="scroll-mt-20 px-5 py-8 sm:px-8 lg:px-8">
+    <>
+    <section id="projects" className="scroll-mt-20 bg-secondary px-5 py-16 sm:px-8 lg:px-8">
       <div className="mx-auto w-full max-w-[1180px]">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
@@ -42,8 +43,11 @@ export function Projects({ projects, scenes = [] }: { projects: Project[]; scene
           </div>
         ) : null}
 
-        {featured ? (
-          <div className="mt-14 grid items-center gap-8 lg:grid-cols-2">
+      </div>
+    </section>
+    {featured ? (
+      <section className="bg-surface px-5 py-16 sm:px-8 lg:px-8">
+        <div className="mx-auto grid w-full max-w-[1180px] items-center gap-8 lg:grid-cols-2">
             <div>
               <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">03 / A closer look</p>
               <h3 className="mt-3 font-display text-[clamp(2.2rem,4vw,3.5rem)] leading-[0.96] tracking-[-0.04em]">{featured.name}</h3>
@@ -53,13 +57,16 @@ export function Projects({ projects, scenes = [] }: { projects: Project[]; scene
               </Link>
             </div>
             <ProjectBrowserMockup src={featured.desktopImage} alt={`${featured.name} homepage`} url={featured.liveUrl} />
-          </div>
-        ) : null}
+        </div>
+      </section>
+    ) : null}
 
-        {scenes.length ? (
-          <>
-          <p className="mt-10 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">The story so far. A written stand-in, not a recording.</p>
-          <ol id="story" className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    {scenes.length ? (
+      <section id="story" className="scroll-mt-20 bg-wash px-5 py-16 sm:px-8 lg:px-8">
+        <div className="mx-auto w-full max-w-[1180px]">
+          <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">The story so far</p>
+          <p className="mt-2 max-w-xl text-sm text-muted">A written stand-in, not a recording.</p>
+          <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {scenes.map((scene, index) => (
               <li key={scene.id}>
                 <p className="font-mono text-[11px] text-lime">{String(index + 1).padStart(2, "0")}</p>
@@ -68,10 +75,10 @@ export function Projects({ projects, scenes = [] }: { projects: Project[]; scene
               </li>
             ))}
           </ol>
-          </>
-        ) : null}
-      </div>
-    </section>
+        </div>
+      </section>
+    ) : null}
+    </>
   );
 }
 

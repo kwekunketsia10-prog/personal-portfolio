@@ -58,7 +58,7 @@ export function Contact({ profile }: { profile: Profile }) {
   }
 
   return (
-    <section id="contact" className="scroll-mt-20 px-5 py-8 sm:px-8 lg:px-8">
+    <section id="contact" className="scroll-mt-20 bg-secondary px-5 py-16 sm:px-8 lg:px-8">
       <div className="mx-auto w-full max-w-[1180px]">
         <div className="grid items-end gap-6 lg:grid-cols-[1.2fr_auto]">
           <div>

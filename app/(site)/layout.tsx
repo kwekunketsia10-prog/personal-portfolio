@@ -29,7 +29,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       <Suspense fallback={<div className="h-[4.5rem]" />}>
         <Navbar profile={profile} />
       </Suspense>
-      <div id="content" className="bg-secondary">{children}</div>
+      <div id="content" className="bg-background">{children}</div>
       <Suspense>
         <Footer profile={profile} projects={projects} />
       </Suspense>

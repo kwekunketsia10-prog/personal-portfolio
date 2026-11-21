@@ -8,7 +8,7 @@ export function Hero({ profile, projects }: { profile: Profile; projects: Projec
   const tags = ["Web developer", "Practice websites", "Fashion and beauty"];
 
   return (
-    <section id="home" className="scroll-mt-20 px-5 pt-24 pb-8 sm:px-8 lg:px-8">
+    <section id="home" className="scroll-mt-20 bg-secondary px-5 pt-24 pb-16 sm:px-8 lg:px-8">
       <div className="mx-auto grid w-full max-w-[1180px] items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
           <p className="font-mono text-[11px] tracking-[0.22em] text-lime uppercase">{profile.heroLabel}</p>

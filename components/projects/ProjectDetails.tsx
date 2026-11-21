@@ -5,7 +5,9 @@ import type { Project } from "@/lib/types";
 
 export function ProjectDetails({ project }: { project: Project }) {
   return (
-    <article className="mx-auto w-full max-w-[1180px] px-5 pt-24 pb-12 sm:px-8 lg:px-12">
+    <article>
+      <section className="bg-secondary px-5 pt-24 pb-12 sm:px-8 lg:px-8">
+      <div className="mx-auto w-full max-w-[1180px]">
       <Link href="/#projects" className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase hover:text-lime">
         <ArrowLeft size={14} /> Selected work
       </Link>
@@ -27,11 +29,15 @@ export function ProjectDetails({ project }: { project: Project }) {
         </a>
       </div>
 
-      <div className="mt-8 rounded-[1.75rem] bg-secondary p-3 sm:p-4">
+      </div>
+      </section>
+      <section className="bg-surface px-5 py-12 sm:px-8 lg:px-8">
+      <div className="mx-auto w-full max-w-[1180px]">
         <ProjectBrowserMockup src={project.desktopImage} alt={`${project.name} homepage`} url={project.liveUrl} priority />
       </div>
-
-      <div className="mt-8 grid gap-4 lg:grid-cols-12">
+      </section>
+      <section className="bg-background px-5 py-12 sm:px-8 lg:px-8">
+      <div className="mx-auto grid w-full max-w-[1180px] gap-4 lg:grid-cols-12">
         <div className="space-y-4 lg:col-span-7">
           <Detail label="Project objective" text={project.objective} />
           <Detail label="Design direction" text={project.designDirection} />
@@ -64,6 +70,7 @@ export function ProjectDetails({ project }: { project: Project }) {
           ) : null}
         </aside>
       </div>
+      </section>
     </article>
   );
 }
