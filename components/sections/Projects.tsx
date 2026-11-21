@@ -2,88 +2,98 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectBrowserMockup } from "@/components/projects/ProjectBrowserMockup";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import type { Project } from "@/lib/types";
+import type { Project, StoryScene } from "@/lib/types";
 
-function ProjectCard({ project, large = false }: { project: Project; large?: boolean }) {
+export function Projects({ projects, scenes = [] }: { projects: Project[]; scenes?: StoryScene[] }) {
+  const featured = projects[0];
+  const side = projects.slice(1, 3);
+  const rest = projects.slice(3);
+
   return (
-    <Link href={`/projects/${project.slug}`} className="group block h-full overflow-hidden rounded-3xl bg-secondary">
-      <div className={`relative overflow-hidden bg-ink ${large ? "aspect-[16/10]" : "aspect-[16/9]"}`}>
+    <section id="projects" className="scroll-mt-20 px-5 py-8 sm:px-8 lg:px-8">
+      <div className="mx-auto w-full max-w-[1180px]">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">02 / Selected work</p>
+            <h2 className="mt-2 font-display text-[clamp(2.2rem,4vw,3.3rem)] leading-[0.98] tracking-[-0.04em]">
+              Practice websites, built to learn.
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm text-muted">Self-initiated projects. Not paid commissions.</p>
+        </div>
+
+        <div className="mt-6 grid gap-4 lg:grid-cols-5">
+          {featured ? (
+            <div className="lg:col-span-3">
+              <ProjectTile project={featured} tall />
+            </div>
+          ) : null}
+          <div className="grid gap-4 lg:col-span-2">
+            {side.map((project) => (
+              <ProjectTile key={project.slug} project={project} />
+            ))}
+          </div>
+        </div>
+        {rest.length ? (
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {rest.map((project) => (
+              <ProjectTile key={project.slug} project={project} />
+            ))}
+          </div>
+        ) : null}
+
+        {featured ? (
+          <div className="mt-14 grid items-center gap-8 lg:grid-cols-2">
+            <div>
+              <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">03 / A closer look</p>
+              <h3 className="mt-3 font-display text-[clamp(2.2rem,4vw,3.5rem)] leading-[0.96] tracking-[-0.04em]">{featured.name}</h3>
+              <p className="mt-3 max-w-md text-muted">{featured.summary}</p>
+              <Link href={`/projects/${featured.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold tracking-[0.12em] text-lime uppercase">
+                Explore the project <ArrowUpRight size={15} />
+              </Link>
+            </div>
+            <ProjectBrowserMockup src={featured.desktopImage} alt={`${featured.name} homepage`} url={featured.liveUrl} />
+          </div>
+        ) : null}
+
+        {scenes.length ? (
+          <p className="mt-10 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">The story so far. A written stand-in, not a recording.</p>
+          <ol id="story" className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {scenes.map((scene, index) => (
+              <li key={scene.id}>
+                <p className="font-mono text-[11px] text-lime">{String(index + 1).padStart(2, "0")}</p>
+                <h3 className="mt-1 font-display text-lg leading-tight tracking-tight">{scene.onScreenText}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{scene.voiceOver}</p>
+              </li>
+            ))}
+          </ol>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+function ProjectTile({ project, tall = false }: { project: Project; tall?: boolean }) {
+  return (
+    <Link href={`/projects/${project.slug}`} className="group block">
+      <div className={`relative overflow-hidden rounded-2xl bg-ink ${tall ? "aspect-[16/10]" : "aspect-[16/8]"}`}>
         {project.desktopImage ? (
           <Image
             src={project.desktopImage}
             alt={`${project.name} homepage`}
             fill
-            sizes="(min-width: 1024px) 50vw, 100vw"
+            sizes="(min-width: 1024px) 40vw, 100vw"
             className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
           />
         ) : null}
       </div>
-      <div className="flex items-center justify-between gap-3 px-4 py-3">
+      <div className="mt-3 flex items-start justify-between gap-3">
         <div>
-          <p className="font-display text-lg tracking-tight">{project.name}</p>
-          <p className="text-xs text-muted">{project.category}</p>
+          <p className="font-display text-lg leading-tight tracking-tight">{project.name}</p>
+          <p className="text-xs tracking-wide text-muted uppercase">{project.category}</p>
         </div>
-        <ArrowUpRight size={16} className="text-lime" />
+        <ArrowUpRight size={16} className="mt-1 shrink-0 text-lime" />
       </div>
     </Link>
-  );
-}
-
-export function Projects({ projects }: { projects: Project[] }) {
-  const featured = projects[0];
-
-  return (
-    <section id="projects" className="scroll-mt-24 px-5 py-8 sm:px-8 lg:px-12">
-      <div className="mx-auto w-full max-w-[1180px]">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading index="02 / Selected work" title="Practice websites, built to learn.">
-            A collection of self-initiated projects I&apos;ve built while learning, experimenting, and developing my skills.
-          </SectionHeading>
-        </div>
-        <div className="mt-6 grid gap-3 lg:grid-cols-12">
-          <div className="grid gap-3 lg:col-span-7">{projects[0] ? <ProjectCard project={projects[0]} large /> : null}</div>
-          <div className="grid gap-3 lg:col-span-5">
-            {projects.slice(1, 3).map((project) => (
-              <ProjectCard key={project.slug} project={project} />
-            ))}
-          </div>
-          {projects.slice(3).map((project) => (
-            <div key={project.slug} className="lg:col-span-6">
-              <ProjectCard project={project} />
-            </div>
-          ))}
-        </div>
-
-        {featured ? (
-          <div className="mt-8 grid items-center gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">03 / A closer look</p>
-              <h3 className="mt-3 font-display text-[clamp(2rem,4vw,3.2rem)] leading-[0.96] tracking-[-0.04em]">{featured.name}</h3>
-              <p className="mt-3 text-muted">{featured.summary}</p>
-              <ul className="mt-4 space-y-1.5">
-                {featured.highlights.slice(0, 4).map((item) => (
-                  <li key={item} className="text-sm text-ink">
-                    <span className="mr-2 text-lime">→</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <a href={featured.liveUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-lime px-5 text-[0.75rem] font-semibold tracking-[0.12em] text-background uppercase hover:bg-lime-deep">
-                  View live project <ArrowUpRight size={15} />
-                </a>
-                <Link href={`/projects/${featured.slug}`} className="inline-flex min-h-11 items-center justify-center rounded-full border border-line px-5 text-[0.75rem] font-semibold tracking-[0.12em] uppercase hover:border-lime hover:text-lime">
-                  Explore project
-                </Link>
-              </div>
-            </div>
-            <div className="lg:col-span-7">
-              <ProjectBrowserMockup src={featured.desktopImage} alt={`${featured.name} homepage`} url={featured.liveUrl} />
-            </div>
-          </div>
-        ) : null}
-      </div>
-    </section>
   );
 }

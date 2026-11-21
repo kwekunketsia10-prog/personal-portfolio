@@ -1,27 +1,22 @@
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { SkillGroup } from "@/lib/types";
 
 export function Skills({ groups }: { groups: SkillGroup[] }) {
+  const items = groups.flatMap((group) => group.items);
+
   return (
-    <section id="skills" className="scroll-mt-24 px-5 py-8 sm:px-8 lg:px-12">
+    <section id="skills" className="scroll-mt-20 px-5 py-8 sm:px-8 lg:px-8">
       <div className="mx-auto w-full max-w-[1180px]">
-        <SectionHeading index="05 / Toolkit" title="The tools behind the work.">
-          A working set of tools I use to design and build websites. Edit this list from the admin as it changes.
-        </SectionHeading>
-        <div className="mt-6 space-y-4">
-          {groups.map((group) => (
-            <div key={group.id}>
-              <p className="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">{group.title}</p>
-              <ul className="mt-2 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <li key={item} className="rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">04 / Toolkit</p>
+        <h2 className="mt-2 font-display text-[clamp(2.2rem,4vw,3.3rem)] leading-[0.98] tracking-[-0.04em]">
+          The tools behind the work.
+        </h2>
+        <ul className="mt-6 flex flex-wrap gap-3">
+          {items.map((item) => (
+            <li key={item} className="rounded-2xl bg-surface px-4 py-3 text-sm text-ink">
+              {item}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

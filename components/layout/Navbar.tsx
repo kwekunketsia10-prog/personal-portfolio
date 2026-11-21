@@ -18,6 +18,15 @@ function useScrolled() {
   );
 }
 
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
 export function Navbar({ profile }: { profile: Profile }) {
   const scrolled = useScrolled();
   const pathname = usePathname();
@@ -86,26 +95,26 @@ export function Navbar({ profile }: { profile: Profile }) {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition ${
-        scrolled || open ? "border-b border-line bg-background/90 backdrop-blur-md" : "bg-transparent"
+        scrolled || open ? "border-b border-line bg-secondary/90 backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[4.5rem] w-full max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-12">
-        <a href={sectionHref("home", pathname)} className="min-w-0 shrink">
-          <span className="font-display text-base tracking-tight text-ink sm:text-lg">{profile.name}</span>
-          <span className="text-muted"> / </span>
-          <span className="font-mono text-[10px] tracking-[0.16em] text-muted uppercase sm:text-[11px]">
-            Web Developer
+      <div className="mx-auto grid h-16 w-full max-w-[1180px] grid-cols-[1fr_auto] items-center gap-4 px-5 sm:px-8 lg:grid-cols-[1fr_auto_1fr] lg:px-8">
+        <a href={sectionHref("home", pathname)} className="flex min-w-0 items-center gap-2.5">
+          <span className="font-display text-xl tracking-tight text-ink">{initials(profile.name)}</span>
+          <span className="min-w-0 leading-tight">
+            <span className="block truncate font-display text-sm tracking-tight text-ink">{profile.name}</span>
+            <span className="block font-mono text-[9px] tracking-[0.16em] text-muted uppercase">Web Developer</span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
           {navigation.map((item) => (
             <a
               key={item.id}
               href={sectionHref(item.id, pathname)}
               aria-current={pathname === "/" && active === item.id ? "true" : undefined}
-              className={`font-mono text-[11px] tracking-[0.16em] uppercase transition ${
-                pathname === "/" && active === item.id ? "text-lime" : "text-muted hover:text-lime"
+              className={`text-[11px] font-semibold tracking-[0.14em] uppercase transition ${
+                pathname === "/" && active === item.id ? "text-lime" : "text-ink/70 hover:text-ink"
               }`}
             >
               {item.label}
@@ -113,7 +122,7 @@ export function Navbar({ profile }: { profile: Profile }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-end gap-3">
           <a
             href={sectionHref("contact", pathname)}
             className="hidden min-h-10 items-center rounded-full bg-ink px-4 text-[0.72rem] font-semibold tracking-[0.12em] text-background uppercase hover:bg-lime sm:inline-flex"

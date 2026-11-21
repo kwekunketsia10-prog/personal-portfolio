@@ -19,8 +19,8 @@ export function Footer({ profile, projects }: { profile: Profile; projects: Proj
   const year = useYear();
 
   return (
-    <footer className="border-t border-line bg-background">
-      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-4 px-5 py-6 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-12">
+    <footer className="border-t border-line/70 bg-secondary">
+      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-4 px-5 py-5 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <a href={sectionHref("home", pathname)} className="font-display text-lg tracking-tight">
           {profile.name.split(" ").map((part) => part[0]).join("").slice(0, 2)}
         </a>

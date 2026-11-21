@@ -58,28 +58,30 @@ export function Contact({ profile }: { profile: Profile }) {
   }
 
   return (
-    <section id="contact" className="scroll-mt-24 px-5 py-6 sm:px-8 lg:px-12">
-      <div className="mx-auto grid w-full max-w-[1180px] gap-8 rounded-[1.75rem] bg-secondary px-5 py-8 sm:px-8 lg:grid-cols-12 lg:px-10">
-        <div className="lg:col-span-5">
-          <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">07 / Start a project</p>
-          <h2 className="mt-3 font-display text-[clamp(2.1rem,4.2vw,3.4rem)] leading-[0.96] tracking-[-0.045em]">
-            Have a project in mind?
-          </h2>
-          <p className="mt-3 leading-relaxed text-muted">
-            Tell me a little about your business or idea. I&apos;d love to hear what you&apos;re planning.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-muted">
-            Whether you&apos;re starting a business, growing an existing brand, or looking to improve your online presence, I can help turn your idea into a professional website.
-          </p>
-          <div className="mt-5 space-y-2 text-ink">
-            {profile.email ? <p><a className="hover:text-lime" href={`mailto:${profile.email}`}>{profile.email}</a></p> : <p className="text-muted">Email: add yours in the admin.</p>}
-            {profile.whatsapp ? <p>WhatsApp: {profile.whatsapp}</p> : null}
-            {profile.location ? <p className="text-muted">{profile.location}</p> : null}
+    <section id="contact" className="scroll-mt-20 px-5 py-8 sm:px-8 lg:px-8">
+      <div className="mx-auto w-full max-w-[1180px]">
+        <div className="grid items-end gap-6 lg:grid-cols-[1.2fr_auto]">
+          <div>
+            <p className="font-mono text-[11px] tracking-[0.18em] text-lime uppercase">06 / Start a project</p>
+            <h2 className="mt-2 max-w-[14ch] font-display text-[clamp(2.3rem,4.4vw,3.6rem)] leading-[0.96] tracking-[-0.045em]">
+              Have a project in mind?
+            </h2>
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-muted">
+              Tell me a little about your business or idea. I&apos;d love to hear what you&apos;re planning.
+            </p>
           </div>
-          <SocialLinks profile={profile} className="mt-5" />
+          <a href="#enquiry" className="inline-flex min-h-12 w-fit items-center rounded-full bg-lime px-6 text-[0.75rem] font-semibold tracking-[0.12em] text-background uppercase hover:bg-lime-deep">
+            Start a conversation
+          </a>
+        </div>
+        <div className="mt-4 space-y-2 text-sm text-ink">
+          {profile.email ? <p><a className="hover:text-lime" href={`mailto:${profile.email}`}>{profile.email}</a></p> : <p className="text-muted">Email: add yours in the admin.</p>}
+          {profile.whatsapp ? <p>WhatsApp: {profile.whatsapp}</p> : null}
+          {profile.location ? <p className="text-muted">{profile.location}</p> : null}
+          <SocialLinks profile={profile} />
         </div>
 
-        <form onSubmit={onSubmit} noValidate className="rounded-3xl bg-surface p-5 sm:p-6 lg:col-span-7">
+        <form id="enquiry" onSubmit={onSubmit} noValidate className="mt-8 rounded-3xl bg-surface p-5 sm:p-6">
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Full name" name="fullName" error={errors.fullName} autoComplete="name" />
             <Field label="Email address" name="email" type="email" error={errors.email} autoComplete="email" />
